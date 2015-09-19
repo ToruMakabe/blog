@@ -1,0 +1,10 @@
+baseurl = "http://torumakabe.github.io/"
+languageCode = "ja"
+title = "re-imagine"
+theme = "purehugo"
+Paginate = 5
+
+[params]
+  twitterName = "tmak_tw"
+  githubName = "ToruMakabe"
+  description = "my life is the sum of my imagination"
