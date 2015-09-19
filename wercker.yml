@@ -1,13 +1,12 @@
 box: debian
 build:
   steps:
-    - arjen/hugo-build:
-	  version: 0.16
-	  theme: purehugo
-      flags: --buildDrafts=true
+    - arjen/hugo-build@1.6.1:
+	    theme: purehugo
+        flags: --buildDrafts=true
 deploy:
   steps:
     - lukevivier/gh-pages@0.2.1:
-      token: $GIT_TOKEN
-      basedir: public
-      repo: ToruMakabe/torumakabe.github.io
+        token: $GIT_TOKEN
+        basedir: public
+        repo: ToruMakabe/torumakabe.github.io
