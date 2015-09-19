@@ -6,8 +6,8 @@ build:
         flags: --buildDrafts=true	
 deploy:
   steps:
-    - lukevivier/gh-pages@0.2.1:
-        token: $GIT_TOKEN
-        domain: torumakabe.github.io
+    - leipert/git-push@0.7.6:
+        gh_oauth: $GIT_TOKEN
+        gh_pages_domain: torumakabe.github.io
         basedir: public
         repo: ToruMakabe/torumakabe.github.io
