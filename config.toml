@@ -6,5 +6,6 @@ Paginate = 5
 
 [params]
   twitterName = "tmak_tw"
+  twitter = "tmak_tw"
   githubName = "ToruMakabe"
   description = "my life is the sum of my imagination"
