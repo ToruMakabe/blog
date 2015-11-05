@@ -20,7 +20,7 @@ AzureはMicrosoftテクノロジーとオープンソースの交差点です。
 
 このDocker VM Extension、AzureのARMテンプレートによく登場します。なんとなくおすすめっぽいです。ですが「自分でDockerをインストールするのと何が違うのよ」という疑問も、あるかと思います。実際、よく聞かれます。
 
-ずばり、答えはGuthubの[README](https://github.com/Azure/azure-docker-extension)にまとまっています。この拡張機能のうれしさは、
+ずばり、答えはGithubの[README](https://github.com/Azure/azure-docker-extension)にまとまっています。この拡張機能のうれしさは、
 
 1.  Docker EngineのStable最新版をインストールしてくれる
 2.  Docker デーモンの起動オプションや認証まわりを設定できる (オプション)
