@@ -77,7 +77,7 @@ title = "Azure ARM Templateによるデプロイと冪等性"
       }
     }
 
-まず、1回目の実行です。リソースグループを新規作成します。
+まず、1回目の実行です。リソースグループ "ARMEval"に対しデプロイします。このリソースグループは前もって作っておいた空の箱です。
 
     PS C:\Workspace> New-AzureRmResourceGroupDeployment -ResourceGroupName ARMEval -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json 
 
@@ -97,7 +97,7 @@ title = "Azure ARM Templateによるデプロイと冪等性"
 
     Outputs           :
 
-できあがりです。このリソースグループ "ARMEval"にはLinux VM、ストレージ、仮想ネットワーク、パブリックIPなどが含まれます。Modeを指定しない場合は増分(Incremental)となります。
+できあがりです。空のリソースグループ にLinux VM、ストレージ、仮想ネットワーク、パブリックIPなどがデプロイされました。Modeを指定しない場合は増分(Incremental)となります。
 
 この環境にじわじわと変更を入れていきましょう。まずはazuredeploy.parameter.json上のパラメータ、DNS名のPrefix(dnsLabelPrefix)をarmpocps -> armpocps2と変えます。
 
