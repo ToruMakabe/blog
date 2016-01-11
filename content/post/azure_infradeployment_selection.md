@@ -66,11 +66,11 @@ Azureを生業にして、3か月たちます。ここまで、もっとも質�
 
 ですが、[以前のエントリ](http://torumakabe.github.io/post/arm_idempotent/)で触れたように、本家のツールであっても、すべてのレイヤをカバーできるほど万能ではありません。たとえばARMはインフラのBootstrappingには向いていますが冪等性が限定的であるため、ソフトウェアパッケージを足す/消す/入れ替えるを頻繁に繰り返す環境のConfiguration用途では、苦しいです。
 
-よってARMは、Immutableな環境で使う、もしくは、ChefなどのConfugurationツールと組み合わせて使うことを念頭に設計をします。
+よってARMは、Immutableな環境で使う、もしくは、ChefなどのConfigurationツールと組み合わせて使うことを念頭に設計をします。
 
 ARMでは、ハード(VM、ストレージ、ネットワーク)の割り当て、OSの導入と設定、各種エージェントの導入が基本。それに加え、Immutableな環境ではプラットフォームソフトを導入してしまっていいでしょう。ARMテンプレートにはDSCやシェルを実行するエクステンションが使えるので、活用します。
 
-また、Bootstrapping時点で、Confugurationツールを導入できてしまうのであれば、せっかくなので入れてしまいましょう。たとえばChefサーバのインストールは、ここで。
+また、Bootstrapping時点で、Configurationツールを導入できてしまうのであれば、せっかくなので入れてしまいましょう。たとえばChefサーバのインストールは、ここで。
 
 
 以上、ちょっとまとまりに欠けますが、ざっとわたしが意識していることを、挙げてみました。
@@ -89,7 +89,7 @@ ARMでは、ハード(VM、ストレージ、ネットワーク)の割り当て�
     * 他Windowsサーバへのソフト導入、各種設定、ドメイン参加 (PowerShell Extension)
     * LinuxへChefサーバを導入、各種設定 (Shell Extension)
     
-* ChefでConfuguration
+* ChefでConfiguration
     * 各ノードのChef bootstrap(言葉が混同しやすいので注意)
     * Chef Clientサービスの起動設定
     * DBサーバのDB領域ディスク作成、フォーマット
