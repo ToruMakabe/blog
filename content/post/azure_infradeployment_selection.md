@@ -57,18 +57,18 @@ Azureを生業にして、3か月たちます。ここまで、もっとも質�
 
 * _Windows or Linux_
 
-　Azure ARMなどはじめからマルチOS環境を前提に作られているツールはありますが、ほとんどのツールはその生まれがWindows、Linuxに寄っています。マルチOS対応が進んではいますが、活用にあたって、参考となる情報量には大きな差があります。たとえばマルチOS対応のツールであっても、DSCはWindowsの、ChefやAnsibleはLinuxの情報が圧倒的に多いです。これは意識せざるを得ません。使うOSでの十分な情報があるか確認します。
+　Azure ARM Templateなど、はじめからマルチOS環境を前提に作られているツールはありますが、ほとんどのツールはその生まれがWindows、Linuxに寄っています。マルチOS対応が進んではいますが、活用にあたって、参考となる情報量には大きな差があります。たとえばマルチOS対応のツールであっても、DSCはWindowsの、ChefやAnsibleはLinuxの情報が圧倒的に多いです。これは意識せざるを得ません。使うOSでの十分な情報があるか確認します。
 
 ## マネージドサービス、機能を活用する
 マネージドサービス = プラットフォームが提供している機能です。Azureであれば、今回対象としているレイヤではARMがそれにあたります。デプロイツールは有用ですが、その導入や維持運用には本質的価値はありません。プラットフォームに任せられるのであれば、そうしたほうが楽です。
 
 また、Azureのインフラは進化が早いため、それに対応するスピードも、本家ツールのほうが期待できます。
 
-ですが、[以前のエントリ](http://torumakabe.github.io/post/arm_idempotent/)で触れたように、本家のツールであっても、すべてのレイヤをカバーできるほど万能ではありません。たとえばARMはインフラのBootstrappingには向いていますが冪等性が限定的であるため、ソフトウェアパッケージを足す/消す/入れ替えるを頻繁に繰り返す環境のConfiguration用途では、苦しいです。
+ですが、[以前のエントリ](http://torumakabe.github.io/post/arm_idempotent/)で触れたように、本家のツールであっても、すべてのレイヤをカバーできるほど万能ではありません。たとえばARM TemplateはインフラのBootstrappingには向いていますが冪等性が限定的であるため、ソフトウェアパッケージを足す/消す/入れ替えるを頻繁に繰り返す環境のConfiguration用途では、苦しいです。
 
-よってARMは、Immutableな環境で使う、もしくは、ChefなどのConfigurationツールと組み合わせて使うことを念頭に設計をします。
+よってARM Templateは、Immutableな環境で使う、もしくは、ChefなどのConfigurationツールと組み合わせて使うことを念頭に設計をします。
 
-ARMでは、ハード(VM、ストレージ、ネットワーク)の割り当て、OSの導入と設定、各種エージェントの導入が基本。それに加え、Immutableな環境ではプラットフォームソフトを導入してしまっていいでしょう。ARMテンプレートにはDSCやシェルを実行するエクステンションが使えるので、活用します。
+ARM Templateでは、ハード(VM、ストレージ、ネットワーク)の割り当て、OSの導入と設定、各種エージェントの導入が基本。それに加え、Immutableな環境ではプラットフォームソフトを導入してしまっていいでしょう。ARM TemplateにはDSCやシェルを実行するエクステンションが使えるので、活用します。
 
 また、Bootstrapping時点で、Configurationツールを導入できてしまうのであれば、せっかくなので入れてしまいましょう。たとえばChefサーバのインストールは、ここで。
 
@@ -80,7 +80,7 @@ ARMでは、ハード(VM、ストレージ、ネットワーク)の割り当て�
 
 ["Automating Deployment with Azure & Chef"](https://gallery.technet.microsoft.com/Automating-Deployment-with-84c1549f)
 
-* ARMでBootstrapping
+* ARM TemplateでBootstrapping
     * VMを4つ作成、1つはLinux、他はWindows
     * ストレージ、ネットワークの作成
     * VMのストレージ、ネットワーク設定
