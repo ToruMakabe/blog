@@ -77,11 +77,11 @@ SAPSという値が出てきます。販売管理アプリケーションがそ�
  なお補足ですが、もちろんSAPはAPサーバをスケールアウトする構成もとれます。その性能は[3-Tierベンチマーク](http://global.sap.com/campaigns/benchmark/appbm_cloud.epx)で確認できます。[Azure上で247,880SAPS](http://blogs.msdn.com/b/saponsqlserver/archive/2015/10/05/world-record-sap-sales-and-distribution-standard-application-benchmark-for-sap-cloud-deployments-released-using-azure-iaas-vms.aspx)出たそうです。
 
 ## 80,000IOPSの規模感
-IOPS = IO Per Second、秒あたりどれだけIOできるかという指標です。GS5では[Premium Storage](https://azure.microsoft.com/ja-jp/documentation/articles/storage-premium-storage-preview-portal/)を接続し、VMあたり最大80,000IOPSを提供します。
+IOPS = IO Per Second、秒あたりどれだけIOできるかという指標です。Azure VM GS5では[Premium Storage](https://azure.microsoft.com/ja-jp/documentation/articles/storage-premium-storage-preview-portal/)を接続し、VMあたり最大80,000IOPSを提供します。
 
-一般的に企業で使われているディスクアレイに載っているHDDのIOPSは、1本あたりおおよそ200です。IOPSに影響する要素は回転数です。よく回る15,000rpm FC/SAS HDDでだいたいこのくらい。
+一般的に企業で使われているディスクアレイに載っているHDDのIOPSは、1本あたりおおよそ200です。IOPSに影響する要素は回転数で、よく回る15,000rpm FC/SAS HDDでだいたいこのくらい。
 
-なので80,000 / 200 = 400。よって80,000IOPSを達成しようとすると、HDDを400本並べないといけません。低くない値です。
+なので80,000 / 200 = 400。よって80,000IOPSを達成しようとすると、HDDを400本並べないといけません。小さくないです。
 
 もちろんディスクアレイにはキャッシュがあるので、キャッシュヒット次第でIOPSは変わります。ベンダが胸を張って公開している値も、キャッシュに当てまくった数字であることが多いです。ですが誠実な技術者は「水物」なキャッシュヒットを前提にサイジングしません。アプリがアレイを占有できて、扱うデータの量や中身に変化がない場合は別ですが、それはまれでしょう。ヒットしない最悪の場合を考慮するはずです。
 
