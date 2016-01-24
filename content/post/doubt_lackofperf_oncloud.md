@@ -62,14 +62,15 @@ SAPSという値が出てきます。販売管理アプリケーションがそ�
 
 比較のため、3年ほど前の2ソケットマシン、現行2ソケットマシン、現行4ソケットマシンを選びました。単体サーバ性能をみるため、APとDBを1台のサーバにまとめた、2-Tierの値をとります。
 
- |               |[DELL R720](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7C91D3C5AFFF9A4689C82EA97027CDF4A42858AD1610A3F732) |[Azure VM GS5](http://global.sap.com/campaigns/benchmark/assets/Cert15038.pdf) | [NEC R120f-2M](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7CFDB9CAEA540B6F601993E4359AB45BEF7ED0949D1BFF155D) | [FUJITSU RX4770 M2](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7C14B03FD143D20C6C90E8F6DEAA4E15F8090BA77A6249E1D0)  |
- |:-----------|:------------|:------------|:------------|:------------|
- |Date|2012/4|2015/9|2015/7|2015/7|
- | CPU Type |Intel Xeon Processor E5-2690| Intel Xeon Processor E5-2698B v3 | Intel Xeon Processor E5-2699 v3 | Intel Xeon Processor E7-8890 v3 |
- | CPU Sockets |2 | 2 | 2 | 4 |
- | CPU Cores|16 | 32 (Virtual) | 36 | 72 |
- | SD Benchmark Users |6,500| 7,600 | 14,440 | 29,750 |
- | SAPS |35,970| 41,670 | 79,880 | 162,500 |
+|               |[DELL R720](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7C91D3C5AFFF9A4689C82EA97027CDF4A42858AD1610A3F732) |[Azure VM GS5](http://global.sap.com/campaigns/benchmark/assets/Cert15038.pdf) | [NEC R120f-2M](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7CFDB9CAEA540B6F601993E4359AB45BEF7ED0949D1BFF155D) | [FUJITSU RX4770 M2](http://download.sap.com/download.epd?context=40E2D9D5E00EEF7C14B03FD143D20C6C90E8F6DEAA4E15F8090BA77A6249E1D0)  |
+|:-----------|:------------|:------------|:------------|:------------|
+|Date|2012/4|2015/9|2015/7|2015/7|
+| CPU Type |Intel Xeon Processor E5-2690| Intel Xeon Processor E5-2698B v3 | Intel Xeon Processor E5-2699 v3 | Intel Xeon Processor E7-8890 v3 |
+| CPU Sockets |2 | 2 | 2 | 4 |
+| CPU Cores|16 | 32 (Virtual) | 36 | 72 |
+| SD Benchmark Users |6,500| 7,600 | 14,440 | 29,750 |
+| SAPS |35,970| 41,670 | 79,880 | 162,500 |
+ 
  
  3年前の2ソケットマシンより性能はいい。現行2ソケットマシンの半分程度が期待値でしょうか。ざっくりE5-2699 v3の物理18コアくらい。4ソケットは無理め。
  
@@ -86,7 +87,7 @@ IOPS = IO Per Second、秒あたりどれだけIOできるかという指標で�
 
 なお、数十万IOPSをこえるディスクアレイがあるのは事実です。でも「桁が違う。クラウドしょぼい」と思わないでください。ディスクアレイ全体の性能と、VMあたりどのくらい提供するかは、別の問題です。ひとつのVMがディスクアレイを占有するのでない限り、VMあたりのIOコントロールは必要です。そうでないと、暴れん坊VMの割を食うVMがでてきます。見えていないだけで、クラウドのバックエンドにはスケーラブルなストレージが鎮座しています。
 
- ## 結論
+## 結論
 
 * Intel x86 2ソケットモデルサーバで動いているようなシステムの移行であれば検討価値あり
 * メモリが448GB以上必要であれば難しい
