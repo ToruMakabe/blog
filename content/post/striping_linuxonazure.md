@@ -89,7 +89,7 @@ MDでストライプを作る際、チャンクを64KBに変更します。
 では、Premium Storage(P30)をMDで2つ束ねたストライプにfioを実行してみましょう。
 
 * 100% Random Read
-* キャッシュを無効にするため、Premium StorageのキャッシュはNone、fio側もdirect=1
+* キャッシュ効果のないデータをとるため、Premium StorageのキャッシュはNone、fio側もdirect=1
 * ブロックサイズは小さめの値が欲しかったので、1K
 
 結果。
