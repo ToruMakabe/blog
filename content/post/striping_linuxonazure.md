@@ -52,7 +52,7 @@ Linuxで使える代表的なストライプ実装は、LVMとMD。
 
 ["Configure Software RAID on Linux"](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-configure-raid/)
 
-["Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ"](https://azure.microsoft.com/ja-jp/documentation/articles/storage-premium-storage-preview-portal/#premium-storage)
+["Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ"](https://azure.microsoft.com/ja-jp/documentation/articles/storage-premium-storage-preview-portal/)
 
 ["Azure Storage secrets and Linux I/O optimizations"](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 
