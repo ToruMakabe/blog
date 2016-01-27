@@ -86,12 +86,13 @@ MDでストライプを作る際、チャンクを64KBに変更します。
  
     sudo mount /dev/md127 /mnt -o barrier=0
     
-以下、Premium Storage(P30)をMDで2つ束ねたストライプにfioを実行した結果です。
+では、Premium Storage(P30)をMDで2つ束ねたストライプにfioを実行してみましょう。
 
 * 100% Random Read
 * キャッシュを無効にするため、Premium StorageのキャッシュはNone、fio側もdirect=1
 * ブロックサイズは小さめの値が欲しかったので、1K
 
+結果。
 
     randread: (g=0): rw=randread, bs=1K-1K/1K-1K/1K-1K, ioengine=libaio, iodepth=32
     fio-2.1.3
