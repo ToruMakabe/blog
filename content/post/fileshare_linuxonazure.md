@@ -17,7 +17,7 @@ title = "Linux on Azureでファイル共有する方法"
 
 そこで、もしAzureでファイル共有が必要であれば、[Azure File Storage](https://azure.microsoft.com/ja-jp/documentation/articles/storage-introduction/)を検討してみてください。Azureのマネージドサービスなので、わざわざ自分でサーバたてて運用する必要がありません。楽。
 
-対応プロトコルは、SMB2.1/3.0。LinuxからはNFSじゃなくSMBでつついてください。
+対応プロトコルは、SMB2.1 or 3.0。LinuxからはNFSじゃなくSMBでつついてください。
 
 使い方は公式ドキュメントを。
 
@@ -51,7 +51,7 @@ shareを作成します。share名はfspocshareとしました。
     data:    Primary Endpoints: file https://tomakabefspoc.file.core.windows.net/
 
 ## Linux * 2VMで共有
-Ubuntuでやりますよ。SMBクライアントとしてcifs-utilsパッケージをインストールします。[Marketplace提供のUbuntu14.04LTS](https://azure.microsoft.com/ja-jp/marketplace/partners/canonical/ubuntuserver1404lts/)であれば、すでに入ってるはずです。
+Ubuntuでやりますよ。SMBクライアントとしてcifs-utilsパッケージをインストールします。[Marketplace提供の14.04 LTS](https://azure.microsoft.com/ja-jp/marketplace/partners/canonical/ubuntuserver1404lts/)であれば、すでに入ってるはずです。
 
     fspocvm01:~$ sudo apt-get install cifs-utils
     
