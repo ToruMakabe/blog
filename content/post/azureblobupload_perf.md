@@ -13,7 +13,7 @@ title = "Azure Blob Upload ツール別ベンチマーク"
 
 そして、端末と、そのおかれている環境も多様です。Windows、Mac。有線、無線。
 
-で、大事なのは並列度。ブロックBlobはブロックを並列に転送する方式がとれるため、ツールが並列転送をサポートしているか? どのくらい効くのか? は重要な評価ポイントです。
+で、大事なのは平行度。ブロックBlobはブロックを平行に転送する方式がとれるため、ツールが平行転送をサポートしているか? どのくらい効くのか? は重要な評価ポイントです。
 
 なので、どのツールがおすすめ?と聞かれても、条件抜きでズバっとは答えにくい。そしてこの質問は頻出。なのでこんな記事を書いています。
 
@@ -44,11 +44,11 @@ title = "Azure Blob Upload ツール別ベンチマーク"
 
 そして測定方式。
 
-AzCopyはPowerShellのMeasure-Commandにて実行時間をとります。NCが並列度指定です。デフォルトの並列度はCPUコア数の8倍です。わしのSurface、OSから4コア見えていますので、32。
+AzCopyはPowerShellのMeasure-Commandにて実行時間をとります。NCが平行度指定です。デフォルトの平行度はCPUコア数の8倍です。わしのSurface、OSから4コア見えていますので、32。
 
     Measure-Command {AzCopy /Source:C:\Users\myaccount\work /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:mykey /Pattern:ubuntu-15.10-server-amd64.iso /Y /NC:count}
 
-Azure CLIも同様にMeasure-Commandで。--concurrenttaskcountで並列度を指定できますが、[ソース](https://github.com/Azure/azure-xplat-cli/blob/dev/lib/util/storage.util._js)を確認したところ、並列度のデフォルトは5です。"StorageUtil.threadsInOperation = 5;"ですね。
+Azure CLIも同様にMeasure-Commandで。--concurrenttaskcountで平行度を指定できますが、[ソース](https://github.com/Azure/azure-xplat-cli/blob/dev/lib/util/storage.util._js)を確認したところ、平行度のデフォルトは5です。"StorageUtil.threadsInOperation = 5;"ですね。
 
     Measure-Command {azure storage blob upload ./ubuntu-15.10-server-amd64.iso -a myaccount -k mykey mycontainer ubuntu1510 --concurrenttaskcount count}
 
@@ -59,10 +59,10 @@ Azure CLIも同様にMeasure-Commandで。--concurrenttaskcountで並列度を�
 Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウォッチで。 
 
 ## 結果
-並列度上げても伸びないな、というタイミングまで上げます。
+平行度上げても伸びないな、というタイミングまで上げます。
 
 |  No  |  OS  |  接続  |  クライアント  |  並行数  |  転送時間(秒)  |
-|-----------:|:-----------|:------------|:------------|------------:|------------:|
+|-----------|-----------|------------|------------|------------:|------------:|
 |1|Windows 10|1Gbps Ethernet|AzCopy|(default:32)|9.62|
 |2|Windows 10|1Gbps Ethernet|AzCopy|5|12.28|
 |3|Windows 10|1Gbps Ethernet|AzCopy|10|10.83|
@@ -86,11 +86,11 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
 
 ## 考察
 * 有線AzCopy早い。単純計算で67MByte/s(480Mbps)出ています。それぞれの計測点の解釈の違いでBlobサービス制限の60MBytes/sを超えてしまっていますがw。データセンタまでのボトルネックがなければ、ポテンシャルを引き出せることがわかります。
-* 並列度は大きく性能に影響します。
-    * 並列度が高すぎてもだめ
-        * 無線AzCopyのデフォルト(並列度32)が並列度10、20より時間がかかっていることからわかる
-    * デフォルトで遅いからといってあきらめず、並列度変えて試してみましょう
-    * SDK使って自分で作る時も同じ。並列度パラメータを意識してください
+* 平行度は大きく性能に影響します。
+    * 平行度が高すぎてもだめ
+        * 無線AzCopyのデフォルト(平行度32)が平行度10、20より時間がかかっていることからわかる
+    * デフォルトで遅いからといってあきらめず、平行度変えて試してみましょう
+    * SDK使って自分で作る時も同じ。平行度パラメータを意識してください
         * .NET: BlobRequestOptions
         * Java/Android: BlobRequestOptions.setConcurrentRequestCount()
         * Node.js: parallelOperationThreadCount
@@ -100,9 +100,9 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
     * Node.jsベースでマルチOS対応のAzure CLIは比べられると分が悪い
     * でも、802.11acでも無線がボトルネックになっているので、いまどきのWi-Fi環境では似たような性能になる
     * No.18の結果は無線状態がよかったと想定
-* Azure Storage Explorer Cross Platform GUIは、現時点で並列度変えられないので性能面では不利。でも直観的なので、使い分け。
+* Azure Storage Explorer Cross Platform GUIは、現時点で平行度変えられないので性能面では不利。でも直観的なので、使い分け。
 
-WAN条件がいいベンチマークでなので、ぜひみなさんの条件でも試してみてください。遅延の大きなリージョンや途中に帯域ボトルネックがある条件でやると、最適な並列度が変わってくるはずです。
+WAN条件がいいベンチマークでなので、ぜひみなさんの条件でも試してみてください。遅延の大きなリージョンや途中に帯域ボトルネックがある条件でやると、最適な平行度が変わってくるはずです。
 
 
 でも一番言いたかったのは、Macbookの有線アダプタ欲しいということです。
