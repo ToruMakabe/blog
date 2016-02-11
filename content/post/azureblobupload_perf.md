@@ -61,7 +61,7 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
 ## 結果
 平行度上げても伸びないな、というタイミングまで上げます。
 
-|(  No )|(  OS  )|(  接続  )|(  クライアント  )|(  並行数  )|(  転送時間(秒) )|
+|実行No|クライアントOS|ネットワーク接続タイプ|クライアントソフトウェア|並行数|転送時間(秒)|
 |  -----------:  |  :-----------:  |  :------------:  |  :------------:  |  ------------:  |  ------------:  |
 |1|  Windows 10  |  1Gbps Ethernet  |  AzCopy  |(default:32)|9.62|
 |2|  Windows 10  |  1Gbps Ethernet  |  AzCopy  |5|12.28|
@@ -71,18 +71,18 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
 |6|  Windows 10  |  1Gbps Ethernet  |  Azure CLI  |10|29.47|
 |7|  Windows 10  |  1Gbps Ethernet  |  Azure CLI  |20|21.05|
 |8|  Windows 10  |  1Gbps Ethernet  |  Azure CLI  |40|20.12|
-|9|  Windows 10  |  1Gbps Ethernet  |  Azure Storage Explorer  |N/A|50.10|
+|9|  Windows 10  |  1Gbps Ethernet  |  Storage Explorer  |N/A|50.10|
 |10|  Windows 10  |  802.11ac  |  AzCopy  |(default:32)|74.87|
 |11|  Windows 10  |  802.11ac  |  AzCopy  |5|53.32|
 |12|  Windows 10  |  802.11ac  |  AzCopy  |10|58.85|
 |13|  Windows 10  |  802.11ac  |  Azure CLI  |(default:5)|57.23|
 |14|  Windows 10  |  802.11ac  |  Azure CLI  |10|50.71|
 |15|  Windows 10  |  802.11ac  |  Azure CLI  |20|54.37|
-|16|  Windows 10  |  802.11ac  |  Azure Storage Explorer  |N/A|54.63|
+|16|  Windows 10  |  802.11ac  |  Storage Explorer  |N/A|54.63|
 |17|  Mac OS X  |  802.11ac  |  Azure CLI  |(default:5)|40.86|
 |18|  Mac OS X  |  802.11ac  |  Azure CLI  |10|33.97|
 |19|  Mac OS X  |  802.11ac  |  Azure CLI  |20|58.57|
-|20|  Mac OS X  |  802.11ac  |  Azure Storage Explorer  |N/A|58.20|
+|20|  Mac OS X  |  802.11ac  |  Storage Explorer  |N/A|58.20|
 
 
 ## 考察
