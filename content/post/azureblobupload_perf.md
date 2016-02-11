@@ -61,7 +61,7 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
 ## 結果
 平行度上げても伸びないな、というタイミングまで上げます。
 
-|  No  |  OS  |  接続  |  クライアント  |  並行数  |  転送時間(秒)  |
+|(  No ))  |(  OS  )|(  接続  )|(  クライアント  )|(  並行数  )|(  転送時間(秒) ) |
 |  -----------:  |  :-----------:  |  :------------:  |  :------------:  |  ------------:  |  ------------:  |
 |1|  Windows 10  |  1Gbps Ethernet  |  AzCopy  |(default:32)|9.62|
 |2|  Windows 10  |  1Gbps Ethernet  |  AzCopy  |5|12.28|
@@ -83,6 +83,7 @@ Azure Storage Explorer Cross Platform GUIは、目視+iPhoneのストップウ�
 |18|  Mac OS X  |  802.11ac  |  Azure CLI  |10|33.97|
 |19|  Mac OS X  |  802.11ac  |  Azure CLI  |20|58.57|
 |20|  Mac OS X  |  802.11ac  |  Azure Storage Explorer  |N/A|58.20|
+
 
 ## 考察
 * 有線AzCopy早い。単純計算で67MByte/s(480Mbps)出ています。それぞれの計測点の解釈の違いでBlobサービス制限の60MBytes/sを超えてしまっていますがw。データセンタまでのボトルネックがなければ、ポテンシャルを引き出せることがわかります。
