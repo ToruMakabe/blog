@@ -1,7 +1,7 @@
 +++
 Categories = ["Azure"]
 Tags = ["Azure", "Blob", "Upload"]
-date = "2016-02-07T17:00:00+09:00"
+date = "2016-02-11T12:00:00+09:00"
 title = "Azure Blob Upload ツール別ベンチマーク"
 
 +++
