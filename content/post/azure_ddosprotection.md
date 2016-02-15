@@ -18,7 +18,7 @@ title = "Azure DDoS対策ことはじめ"
 
     "To protect Azure platform services, Microsoft provides a distributed denial-of-service (DDoS) defense system that is part of Azure’s continuous monitoring process, and is continually improved through penetration-testing. Azure’s DDoS defense system is designed to not only withstand attacks from the outside, but also from other Azure tenants:"
     
-MicrosoftはDDoSを防ぐ仕組み提供しており、Azure外部からの攻撃はもちろんのこと、Azure内部で別テナントから攻撃されることも考慮しています。
+MicrosoftはDDoSを防ぐ仕組みを提供しており、Azure外部からの攻撃はもちろんのこと、Azure内部で別テナントから攻撃されることも考慮しています。
 
 ## Azureがやってくれること
 では、具体的に。
