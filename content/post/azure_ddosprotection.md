@@ -52,7 +52,9 @@ Webサーバへアドインを入れましょう。パッチも適用しまし�
 もしブロックしたいアクセス元IPアドレスがわかるなら、ACLで遮断しましょう。逆に通信可能な範囲のみ指定することもできます。
 
 ## ホワイトペーパーに加えて
-[CDN](https://azure.microsoft.com/ja-jp/services/cdn/)も有効ですので検討ください。2段構えでの負荷分散、防御ができます。CDNは常に揉まれているだけあって、DDoS防御四天王で最強の漢が最初に出てくるくらい強力です。
+[CDN](https://azure.microsoft.com/ja-jp/services/cdn/)も有効ですので検討ください。2段構えでの負荷分散、防御ができます。Akamaiとの統合ソリューションも今後[提供される予定](https://azure.microsoft.com/ja-jp/blog/microsoft-and-akamai-bring-cdn-to-azure-customers/)です。
+
+CDNは常に世界中からのトラフィックで揉まれているだけあって、DDoS防御四天王で最強の漢が最初に出てくるくらい強力です。
 
 
 最後に。攻撃されている感があれば、カスタマーサポートまで。
