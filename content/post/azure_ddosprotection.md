@@ -18,14 +18,14 @@ title = "Azure DDoS対策ことはじめ"
 
     "To protect Azure platform services, Microsoft provides a distributed denial-of-service (DDoS) defense system that is part of Azure’s continuous monitoring process, and is continually improved through penetration-testing. Azure’s DDoS defense system is designed to not only withstand attacks from the outside, but also from other Azure tenants:"
     
-MicrosoftはDDoSを防ぐ仕組みを提供しており、Azure外部からの攻撃はもちろんのこと、Azure内部で別テナントから攻撃されることも考慮しています。
+MicrosoftはDDoSを防ぐ仕組みを提供しています。Azure外部からの攻撃はもちろんのこと、Azure内部で別テナントから攻撃されることも考慮しています。
 
 ## Azureがやってくれること
 では、具体的に。
 
     "1. Network-layer high volume attacks. These attacks choke network pipes and packet processing capabilities by flooding the network with packets. The Azure DDoS defense technology provides detection and mitigation techniques such as SYN cookies, rate limiting, and connection limits to help ensure that such attacks do not impact customer environments."
 
-ネットワークレイヤで検知できる力押しは、AzureのDDoS防御システムが検知、緩和します。このホワイトペーパーのAppendixで図解されていますが、ファイヤウォールの前段に配置され、SYN Cookieやレート制限、コネクション制限などのテクニックを使います。
+ネットワークレイヤで検知できる力押しは、AzureのDDoS防御システムが検知、緩和します。このホワイトペーパーのAppendixで図解されていますが、それはファイヤウォールの前段に配置され、SYN Cookieやレート制限、コネクション制限などのテクニックを使っています。
 
 ## お客様対応が必要なこと
 
@@ -41,7 +41,7 @@ MicrosoftはDDoSを防ぐ仕組みを提供しており、Azure外部からの�
     
     "Using firewall proxy devices such as Web Application Firewalls (WAFs) that terminate and forward traffic to endpoints running in a VM. This provides some protection against a broad range of DoS and other attacks, such as low-rate, HTTP, and other application-layer threats. Some virtualized solutions, such as Barracuda Networks, are available that perform both intrusion detection and prevention."
 
-WAFを入れて、通信の中身を見ないとわからない攻撃を検知、緩和します。一見ノーマルなトラフィックでも「ゆっくりと攻撃」するようなケースもあります。たとえば、ゆっくりWebサーバのコネクションを枯渇させるような攻撃など。Azureでは仮想アプライアンスとして、Barracuda NetworksのWAFなどが使えます。
+WAFを入れて、通信の中身を見ないとわからない攻撃を検知、緩和します。一見ノーマルなトラフィックでも「ゆっくりと攻撃」するようなケースもあります。たとえば、ゆっくりWebサーバのコネクションを枯渇させるような攻撃などです。Azureでは仮想アプライアンスとして、Barracuda NetworksのWAFなどが使えます。
 
     " Web Server add-ons that protect against certain DoS attacks."
 
