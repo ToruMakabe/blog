@@ -128,7 +128,7 @@ Terraformをアプリケーションとして登録し、そのサービスプ�
         location = "Japan West"
     }
     
-appy。もちろんplanしましたよ。
+apply。もちろんplanしましたよ。
 
     $ terraform apply
     azurerm_resource_group.test: Creating...
