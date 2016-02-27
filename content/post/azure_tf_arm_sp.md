@@ -42,7 +42,7 @@ Terraformをアプリケーションとして登録し、そのサービスプ�
     data:    AppId:                   AppId-AppId-AppId-AppId-AppId
     data:    ObjectId:                AppObjId-AppObjId-AppObjId-AppObjId
     data:    DisplayName:             My Terraform
-    data:    IdentifierUris:          0=http://tftest.makabe.me
+    data:    IdentifierUris:          0=http://tftest.makabe.info
     data:    ReplyUrls:
     data:    AvailableToOtherTenants:  False
     data:    AppPermissions:
@@ -69,7 +69,7 @@ Terraformをアプリケーションとして登録し、そのサービスプ�
     data:    Display Name:            My Terraform
     data:    Service Principal Names:
     data:                             AppId-AppId-AppId-AppId-AppId
-    data:                             http://tftest.makabe.me
+    data:                             http://tftest.makabe.info
     info:    ad sp create command OK
     
 サービスプリンシパルの役割を設定します。--objectIdは、サービスプリンシパルのObject Idなのでご注意を。アプリのObject Idではありません。
