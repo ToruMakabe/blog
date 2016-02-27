@@ -34,7 +34,7 @@ Terraformをアプリケーションとして登録し、そのサービスプ�
 
 以下、Azure CLIでの実行結果をのせておきます。WindowsでもMacでもLinuxでも手順は同じです。
 
-まずは、Terraformをアプリとして登録します。--identifier-urisはユニークにしなければいけません。
+まずは、Terraformをアプリとして登録します。--identifier-urisの存在チェックはないですが、ユニークにしなければいけません。また、--passwordはclient_secretになるので、おぼえておきましょう。
 
     $ azure ad app create --name "My Terraform" --home-page "http://tftest.makabe.info" --identifier-uris "http://tftest.makabe.info" --password pAssw0rd%
     info:    Executing command ad app create
@@ -138,4 +138,4 @@ apply。もちろんplanしましたよ。
     
     Apply complete! Resources: 1 added, 0 changed, 0 destroyed.  
     
-これで、ARM認証難民がうまれませんように。
+これで、ARM認証難民がうまれなくなりますように。
