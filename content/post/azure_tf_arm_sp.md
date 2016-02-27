@@ -25,7 +25,7 @@ Terraformのマイナーバージョンアップのたびに、[Azure Resource M
     }
     
 
-subscription_idは、いつものあれ。tenant_idは普段使わないけどどこかで見た気がする。でも、*client_id/client_secret って何よ*。ためしにポータルログインで使うID/パスワード指定したら、盛大にコケた。
+subscription_idは、いつものあれ。tenant_idは普段使わないけどどこかで見た気がする。でも、**client_id/client_secret って何よ**。ためしにポータルログインで使うID/パスワード指定したら、盛大にコケた。
 
 ## サービスプリンシパルを使おう
 Terraformをアプリケーションとして登録し、そのサービスプリンシパルを作成し権限を付与すると、使えるようになります。
