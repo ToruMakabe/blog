@@ -27,10 +27,16 @@ Terraformのマイナーバージョンアップのたびに、[Azure Resource M
 
 subscription_idは、いつものあれ。tenant_idは普段使わないけどどこかで見た気がする。でも、**client_id/client_secret って何よ**。ためしにポータルログインで使うID/パスワード指定したら、盛大にコケた。
 
+    "The provider needs to be configured with the credentials needed to generate OAuth tokens for the ARM API."
+
+おっとそういうことか。OAuth。
+
 ## サービスプリンシパルを使おう
 Terraformをアプリケーションとして登録し、そのサービスプリンシパルを作成し権限を付与すると、使えるようになります。
 
-["Azure リソース マネージャーでのサービス プリンシパルの認証"](https://azure.microsoft.com/ja-jp/documentation/articles/resource-group-authenticate-service-principal/#--azure-cli)
+["アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト"](https://azure.microsoft.com/ja-jp/documentation/articles/active-directory-application-objects/)
+
+["Azure リソース マネージャーでのサービス プリンシパルの認証"](https://azure.microsoft.com/ja-jp/documentation/articles/resource-group-authenticate-service-principal/)
 
 以下、Azure CLIでの実行結果をのせておきます。WindowsでもMacでもLinuxでも手順は同じです。
 
