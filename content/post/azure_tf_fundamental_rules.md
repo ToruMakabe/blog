@@ -27,8 +27,8 @@ title = "Terraform & Azure デプロイ設計4原則"
     ├── .gitignore
     ├── main.tf
     ├── availability_set
-    │   ├── avset_backend.tf
-    │   ├── avset_frontend.tf
+    │   ├── avset_web.tf
+    │   ├── avset_db.tf
     │   └── variables.tf
     ├── network
     │   ├── sg_backend.tf
