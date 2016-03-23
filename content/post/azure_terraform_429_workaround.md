@@ -12,7 +12,7 @@ title = "Azure & Terraform エラーコード429の対処法"
 追って[Hashicorp認定パートナー](https://www.hashicorp.com/partners.html#sipart)のクリエーションラインさんから導入・サポートサービスが[アナウンス](http://www.creationline.com/lab/13268)されましたし、今後AzureをTerraformでコントロールしようという需要は増えそうです。
 
 ## エラーコード429
-さて、TerraformでAzureをいじっていると、下記のエラーに出くわすことがあります。
+さて、TerraformでAzureをいじっていると、下記のようなエラーに出くわすことがあります。
 
     Error applying plan:
 
@@ -39,7 +39,7 @@ Azure Resource Manager APIには時間当たりのリクエスト数制限があ
 
 Terraformは扱うリソースごとにAPIをコールするので、数が多いとこの上限にひっかかる可能性があります。
 
-長期的な対処として、Terraformにリトライ/Exponential Backoffしてもらうのがいいのか、このままユーザ側でシンプルにリトライすべきか、悩ましいところです。
+長期的な対処として、Terraformにリトライ/Exponential Backoffロジックなどを実装してもらうのがいいのか、このままユーザ側でシンプルにリトライすべきか、悩ましいところです。
 
 ひとまずプロダクトの方針は確認したいので、Issueに質問を[あげておきました](https://github.com/hashicorp/terraform/issues/5704)。
 
