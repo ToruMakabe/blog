@@ -37,7 +37,7 @@ Azure Resource Manager APIには時間当たりのリクエスト数制限があ
 
 **[Azure サブスクリプションとサービスの制限、クォータ、制約](https://azure.microsoft.com/ja-jp/documentation/articles/azure-subscription-service-limits/)**
 
-Terraformは扱うリソースごとにAPIをコールするので、数が多いとこの上限にひっかかる可能性があります。
+Terraformは扱うリソースごとにAPIをコールするので、数が多い環境で作って壊してをやると、この上限にひっかかる可能性があります。
 
 長期的な対処として、Terraformにリトライ/Exponential Backoffロジックなどを実装してもらうのがいいのか、このままユーザ側でシンプルにリトライすべきか、悩ましいところです。
 
