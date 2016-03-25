@@ -56,3 +56,5 @@ Too many requestsをどう解釈するかにもよりますが、ちょっと混
 
 
 でも安心してください。**もう一度applyしてください**。
+
+**(2016/3/25 追記) 回避策を[別エントリ](http://torumakabe.github.io/post/azure_terraform_earlyphase_tips/)に書きました**
