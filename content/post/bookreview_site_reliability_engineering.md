@@ -9,7 +9,7 @@ title = "書評: Site Reliability Engineering"
 ## 英語だけどぜひ読んでほしい
 **[Site Reliability Engineering: How Google Runs Production Systems](http://www.amazon.co.jp/Site-Reliability-Engineering-Production-Systems-ebook/dp/B01DCPXKZ6/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=1459069692&sr=8-1)**
 
-参考になったのでご紹介。Googleのインフラ/Ops系技術チームの働き方や考え方を題材にした本です。SREの情報は断片的に知っていたのですが、まとめて読むと違いますね。背景やストーリーがあって、理解しやすいです。
+参考になったのでご紹介。Googleのインフラ/Ops系技術チームの働き方や考え方を題材にした本です。GoogleのSREについては断片的に知っていたのですが、まとめて読むと違いますね。背景やストーリーがあって、理解しやすいです。
 
 共感できるネタがどんどん繰り出されるので、一気読みしました。読み込みが浅いところもあったので、改めて読む予定。
 
