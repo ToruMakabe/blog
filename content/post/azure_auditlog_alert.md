@@ -32,7 +32,7 @@ Azureの監査ログからアラートを上げる機能のプレビューが[�
 * サービスプリンシパルへのロール割り当て
 * Azure Automationのアカウント作成
 * Azure Automation Runbook実行時ログインに必要な証明書や資格情報などの資産登録
-* Azure Automation Runbookで使う変数資産登録 (Runbook内でGet-AutomationVariableで取得されているもの)
+* Azure Automation Runbookで使う変数資産登録 (Runbook内でGet-AutomationVariableで取得できます。暗号化もできますし、コードに含めるべきでない情報は、登録しましょう)
 * OMSワークスペースの作成
 
 もしAutomationまわりの作業がはじめてであれば、下記記事を参考にしてください。とてもわかりやすい。
