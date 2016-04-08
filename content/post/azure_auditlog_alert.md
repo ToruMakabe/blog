@@ -87,7 +87,10 @@ Azureの監査ログからアラートを上げる機能のプレビューが[�
     {
         Write-Error "This runbook is meant to only be started from a webhook." 
     }
-    
+
+Runbookができたら、Webhookを作ります。詳しくは[こちら](https://azure.microsoft.com/ja-jp/documentation/articles/automation-webhooks/)。
+
+WebhookのURLを控えておいてください。    
     
 ## Azure 監査ログアラート側の仕掛け
 Powershellでアラートルールを作ります。実行アカウントの権限に気をつけてください。
