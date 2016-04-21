@@ -24,7 +24,7 @@ AzureのIaaSでは、VMに接続するディスクとしてAzure StorageのPage 
 
 * RHEL 7.2 on Azure
 * XFS & Ext4
-* 10GbytesのPage Blobの上にファイルシステムを作成
+* 10GBytesのPage Blobの上にファイルシステムを作成
 * mkfsはデフォルト
 * mountはデフォルトとdiscardオプションありの2パターン
 * MD、LVM構成にしない
@@ -33,7 +33,7 @@ AzureのIaaSでは、VMに接続するディスクとしてAzure StorageのPage 
     * ファイルシステム作成時
     * マウント時
     * 約5GBytesのデータ書き込み時 (ddで/dev/zeroをbs=1M、count=5000で書き込み)
-    * 5Gbytesのファイル削除時
+    * 5GBytesのファイル削除時
 
 課金対象容量は、以下のPowerShellで取得します。リファレンスは[ここ](https://gallery.technet.microsoft.com/scriptcenter/Get-Billable-Size-of-32175802)。
 
