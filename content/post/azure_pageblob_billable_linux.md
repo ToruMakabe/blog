@@ -74,8 +74,8 @@ AzureのIaaSでは、VMに接続するディスクとしてAzure StorageのPage 
 * 10GBytesのBlobを作成しても、全てが課金対象ではない
 * 当然だが、ファイルシステムによってメタデータの書き方が違う、よって書き込み容量も異なる
 * discardオプションなしでマウントすると、ファイルを消しても課金対象容量は減らない
-    * OSがディスクに"消した"と伝えないから
-    * discardオプションにてSCSI UNMAPがディスクに伝えられ、領域は解放される(課金対象容量も減る)
+    * OSがPage Blobに"消した"と伝えないから
+    * discardオプションにてSCSI UNMAPがPage Blobに伝えられ、領域は解放される(課金対象容量も減る)
     * discardオプションはリアルタイムであるため便利。でも性能影響があるため、実運用ではバッチ適用(fstrim)が[おすすめ](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/ch02s05.html)
 
     
