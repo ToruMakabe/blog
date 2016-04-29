@@ -60,7 +60,7 @@ applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のス
 * サーバー数は1台とする - jobSpecification/poolInfo/autoPoolSpecification/pool/targetDedicated
 * サーバープール作成時にstarttask.shを呼び出す - jobSpecification/poolInfo/autoPoolSpecification/pool/startTask
 
-
+    
     {
     "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#jobschedules/@Element",
     "id":"myjobschedule1",
@@ -139,6 +139,7 @@ applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のス
             }
          }
     }
+    
 
 
 他にも面白そうなパラメータがありますね。またの機会に。
