@@ -48,7 +48,7 @@ applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のス
 * [starttask.sh](https://github.com/ToruMakabe/Azure_Batch_Sample/blob/master/blob/application/starttask.sh) - docker engineをインストールします
 * [task.sh](https://github.com/ToruMakabe/Azure_Batch_Sample/blob/master/blob/application/task.sh) - docker hubからサンプルアプリが入ったコンテナーを持ってきて実行します。[サンプル](https://github.com/ToruMakabe/Azure_Batch_Sample/tree/master/docker)はPythonで書いたシンプルなWord Countアプリです
 
-また、アプリにデータをわたすinputコンテナーと、実行結果を書き込むoutputコンテナーも作ります。サンプルのinputデータはアメリカ国家です。
+また、アプリにデータをわたすinputコンテナーと、実行結果を書き込むoutputコンテナーも作ります。サンプルのinputデータはアメリカ国歌です。
 
 さて、いよいよジョブをJSONで定義します。詳細は[公式ドキュメント](https://msdn.microsoft.com/en-us/library/azure/dn820158.aspx?f=255&MSPPError=-2147217396)を確認してください。ポイントだけまとめます。
 
@@ -148,7 +148,7 @@ applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のス
 
     azure batch job-schedule create -f ./create_jobsched.json -u https://yourendpoint.location.batch.azure.com -a yourbatchaccount -k yourbatchaccountkey
     
-以上です。あとはAzureにお任せです。
+以上です。あとはAzureにお任せです。4時間に1回、アメリカ国歌の単語を数える刺身タンポポなジョブですが、はじめはシンプルに。
 
 ## Azure Automationとの使い分け
 Azure Automationを使っても、ジョブの定期実行はできます。大きな違いは、PowerShellの要否と並列実行フレームワークの有無です。Azure AutomationはPowerShell前提ですが、Azure BatchはPowerShellに馴染みのない人でも使うことができます。また、今回は触れませんでしたが、Azure Batchはオートスケールなど、バッチ処理に特化した機能を提供していることも特長です。うまく使い分けてください。
