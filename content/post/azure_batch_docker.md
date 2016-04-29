@@ -6,13 +6,13 @@ title = "Azure BatchとDockerで管理サーバレスバッチ環境を作る"
 
 +++
 
-## サーバレスって言ってみたかっただけじゃないです
+## サーバレスって言いたいだけじゃないです
 Linux向けAzure BatchのPreviewが[はじまり](https://azure.microsoft.com/ja-jp/blog/announcing-support-of-linux-vm-on-azure-batch-service/)ました。地味ですが、なかなかのポテンシャルです。
 
-クラウドでバッチを走らせる時にチャレンジしたいのは、「ジョブを走らせる時だけサーバー使う。待機時間は消しておいて、
+クラウドでバッチを走らせる時にチャレンジしたいことの筆頭は「ジョブを走らせる時だけサーバー使う。待機時間は消しておいて、
 節約」でしょう。
 
-ですが、仕組み作りが意外に面倒なんですよね。管理サーバーを作って、ジョブ管理ソフト入れて、Azure SDK/CLI入れて。クレデンシャルを安全に管理して。可用性確保して。バックアップして。で、管理サーバーは消せない。なんか中途半端です。
+ですが、仕組み作りが意外に面倒なんですよね。管理サーバーを作って、ジョブ管理ソフト入れて、Azure SDK/CLI入れて。クレデンシャルを安全に管理して。可用性確保して。バックアップして。で、管理サーバーは消せずに常時起動。なんか中途半端です。
 
 その課題、Azure Batchを使って解決しましょう。レッツ管理サーバーレスバッチ処理。
 
@@ -20,7 +20,7 @@ Linux向けAzure BatchのPreviewが[はじまり](https://azure.microsoft.com/ja
 
 * 管理サーバーを作らない
 * Azure Batchコマンドでジョブを投入したら、あとはスケジュール通りに定期実行される
-* ジョブ実行サーバーは必要な時に作成され、処理が終わったら削除される
+* ジョブ実行サーバー群(Pool)は必要な時に作成され、処理が終わったら削除される
 * サーバーの迅速な作成とアプリ可搬性担保のため、dockerを使う
 * セットアップスクリプト、タスク実行ファイル、アプリ向け入力/出力ファイルはオブジェクトストレージに格納
 
@@ -43,7 +43,7 @@ Githubにソースを[置いておきます](https://github.com/ToruMakabe/Azure
     │   │   └── the_star_spangled_banner.txt
     │   └── output
 
-applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のスクリプト(starttask.sh)と、タスク実行時のスクリプト(task.sh)を配置します。
+applicationコンテナーに、ジョブ実行サーバー作成時のスクリプト(starttask.sh)と、タスク実行時のスクリプト(task.sh)を配置します。
 
 * [starttask.sh](https://github.com/ToruMakabe/Azure_Batch_Sample/blob/master/blob/application/starttask.sh) - docker engineをインストールします
 * [task.sh](https://github.com/ToruMakabe/Azure_Batch_Sample/blob/master/blob/application/task.sh) - docker hubからサンプルアプリが入ったコンテナーを持ってきて実行します。[サンプル](https://github.com/ToruMakabe/Azure_Batch_Sample/tree/master/docker)はPythonで書いたシンプルなWord Countアプリです
@@ -60,95 +60,94 @@ applicationコンテナーに、ジョブ実行サーバー(Pool)作成時のス
 * サーバー数は1台とする - jobSpecification/poolInfo/autoPoolSpecification/pool/targetDedicated
 * サーバープール作成時にstarttask.shを呼び出す - jobSpecification/poolInfo/autoPoolSpecification/pool/startTask
 
-    
-    {
-    "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#jobschedules/@Element",
-    "id":"myjobschedule1",
-    "schedule": {
-        "doNotRunUntil":"2016-04-29T05:30:00.000Z",
-        "recurrenceInterval":"PT4H"
+```    
+  {
+  "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#jobschedules/@Element",
+  "id":"myjobschedule1",
+  "schedule": {
+    "doNotRunUntil":"2016-04-29T05:30:00.000Z",
+    "recurrenceInterval":"PT4H"
+  },
+  "jobSpecification": {
+    "priority":100,
+    "constraints": {
+      "maxWallClockTime":"PT1H",
+      "maxTaskRetryCount":-1
     },
-    "jobSpecification": {
-        "priority":100,
-        "constraints": {
-            "maxWallClockTime":"PT1H",
-            "maxTaskRetryCount":-1
-        },
-        "jobManagerTask": {
-            "id":"mytask1",
-            "commandLine":"/bin/bash -c 'export LC_ALL=en_US.UTF-8; ./task.sh'",
-            "resourceFiles": [ {
+    "jobManagerTask": {
+      "id":"mytask1",
+      "commandLine":"/bin/bash -c 'export LC_ALL=en_US.UTF-8; ./task.sh'",
+      "resourceFiles": [ {
+        "blobSource":"yourbloburi&sas",
+        "filePath":"task.sh"
+      }], 
+      "environmentSettings": [ {
+        "name":"VAR1",
+        "value":"hello"
+      } ],
+      "constraints": {
+        "maxWallClockTime":"PT1H",
+        "maxTaskRetryCount":0,
+        "retentionTime":"PT1H"
+      },
+      "killJobOnCompletion":false,
+      "runElevated":true,
+      "runExclusive":true
+      },
+      "poolInfo": {
+        "autoPoolSpecification": {
+          "autoPoolIdPrefix":"mypool",
+          "poolLifetimeOption":"job",
+          "pool": {
+            "vmSize":"STANDARD_D1",
+            "virtualMachineConfiguration": {
+              "imageReference": {
+                "publisher":"Canonical",
+                "offer":"UbuntuServer",
+                "sku":"14.04.4-LTS",
+                "version":"latest"
+              },
+              "nodeAgentSKUId":"batch.node.ubuntu 14.04"
+            },
+            "resizeTimeout":"PT15M",
+            "targetDedicated":1,
+            "maxTasksPerNode":1,
+            "taskSchedulingPolicy": {
+              "nodeFillType":"Spread"
+            },
+            "enableAutoScale":false,
+            "enableInterNodeCommunication":false,
+            "startTask": {
+              "commandLine":"/bin/bash -c 'export LC_ALL=en_US.UTF-8; ./starttask.sh'",
+              "resourceFiles": [ {
                 "blobSource":"yourbloburi&sas",
-                "filePath":"task.sh"
-            }], 
-            "environmentSettings": [ {
-                "name":"VAR1",
-                "value":"hello"
-            } ],
-            "constraints": {
-                "maxWallClockTime":"PT1H",
-                "maxTaskRetryCount":0,
-                "retentionTime":"PT1H"
+                "filePath":"starttask.sh"
+              } ],
+              "environmentSettings": [ {
+                "name":"VAR2",
+                "value":"Chao"
+              } ],
+              "runElevated":true,
+              "waitForSuccess":true
             },
-            "killJobOnCompletion":false,
-            "runElevated":true,
-            "runExclusive":true
-            },
-            "poolInfo": {
-                "autoPoolSpecification": {
-                    "autoPoolIdPrefix":"mypool",
-                    "poolLifetimeOption":"job",
-                    "pool": {
-                        "vmSize":"STANDARD_D1",
-                        "virtualMachineConfiguration": {
-                            "imageReference": {
-                            "publisher":"Canonical",
-                            "offer":"UbuntuServer",
-                            "sku":"14.04.4-LTS",
-                            "version":"latest"
-                            },
-                            "nodeAgentSKUId":"batch.node.ubuntu 14.04"
-                        },
-                        "resizeTimeout":"PT15M",
-                        "targetDedicated":1,
-                        "maxTasksPerNode":1,
-                        "taskSchedulingPolicy": {
-                            "nodeFillType":"Spread"
-                        },
-                        "enableAutoScale":false,
-                        "enableInterNodeCommunication":false,
-                        "startTask": {
-                            "commandLine":"/bin/bash -c 'export LC_ALL=en_US.UTF-8; ./starttask.sh'",
-                            "resourceFiles": [ {
-                            "blobSource":"yourbloburi&sas",
-                            "filePath":"starttask.sh"
-                            } ],
-                            "environmentSettings": [ {
-                            "name":"VAR2",
-                            "value":"Chao"
-                            } ],
-                            "runElevated":true,
-                            "waitForSuccess":true
-                        },
-                        "metadata": [ {
-                            "name":"myproperty",
-                            "value":"myvalue"
-                        } ]
-                    }
-                }
-            }
-         }
+            "metadata": [ {
+              "name":"myproperty",
+              "value":"myvalue"
+            } ]
+          }
+        }
+      }
     }
-    
+  }
+```    
 
+他にも面白そうなパラメータがありますね。並列バッチやジョブリリース時のタスクなど、今回使っていないものもあります。応用版はまたの機会に。
 
-他にも面白そうなパラメータがありますね。またの機会に。
-
-ではスケジュールジョブをAzure Batchに送り込みます。
+ではスケジュールジョブをAzure BatchにCLIで送り込みます。
 
     azure batch job-schedule create -f ./create_jobsched.json -u https://yourendpoint.location.batch.azure.com -a yourbatchaccount -k yourbatchaccountkey
     
-以上です。あとはAzureにお任せです。4時間に1回、アメリカ国歌の単語を数える刺身タンポポなジョブですが、はじめはシンプルに。
+以上です。あとはAzureにお任せです。4時間に1回、アメリカ国歌の単語を数える刺身タンポポなジョブですが、コツコツいきましょう。
 
 ## Azure Automationとの使い分け
-Azure Automationを使っても、ジョブの定期実行はできます。大きな違いは、PowerShellの要否と並列実行フレームワークの有無です。Azure AutomationはPowerShell前提ですが、Azure BatchはPowerShellに馴染みのない人でも使うことができます。また、今回は触れませんでしたが、Azure Batchはオートスケールなど、バッチ処理に特化した機能を提供していることも特長です。うまく使い分けてください。
+Azure Automationを使っても、ジョブの定期実行はできます。大きな違いは、PowerShellの要否と並列実行フレームワークの有無です。Azure AutomationはPowerShell前提ですが、Azure BatchはPowerShellに馴染みのない人でも使うことができます。また、今回は触れませんでしたが、Azure Batchは並列バッチ、オートスケールなど、バッチ処理に特化した機能を提供していることが特長です。うまく使い分けましょう。
