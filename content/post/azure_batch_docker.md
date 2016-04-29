@@ -50,6 +50,8 @@ applicationコンテナーに、ジョブ実行サーバー作成時のスクリ
 
 また、アプリにデータをわたすinputコンテナーと、実行結果を書き込むoutputコンテナーも作ります。サンプルのinputデータはアメリカ国歌です。
 
+コンテナー、ファイルには、適宜SASを生成しておいてください。inputではreadとlist、outputでは加えてwrite権限を。
+
 さて、いよいよジョブをJSONで定義します。詳細は[公式ドキュメント](https://msdn.microsoft.com/en-us/library/azure/dn820158.aspx?f=255&MSPPError=-2147217396)を確認してください。ポイントだけまとめます。
 
 * 2016/04/29 05:30(UTC)から開始する - schedule/doNotRunUntil
