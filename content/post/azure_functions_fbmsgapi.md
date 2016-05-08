@@ -56,7 +56,7 @@ Azure Functionsは、
     * Azure Functionsからのcallback URLを登録、接続検証  #順番6
     * Azure Functions向けTokenを生成 #順番7
 
-アプリのコード書きの他はそれほど重くない作業ですが、すべての手順を書くと本ができそうです。FUnction Appの作りにポイントを絞りたいので、以下、参考になるサイトをご紹介します。
+アプリのコード書きの他はそれほど重くない作業ですが、すべての手順を書くと本ができそうです。Function Appの作りにポイントを絞りたいので、以下、参考になるサイトをご紹介します。
 
 * Function Appを書くまで、順番1〜2、5〜8は、[こちらのブログエントリ](http://oauth.jp/blog/2016/04/19/fb-message-callback-with-azure-function/)がとても参考になります。
 * Facebook for Developersへの登録、順番3は、https://developers.facebook.com/ から。いきなり迷子の人は、[こちら](http://qiita.com/k_kuni/items/3d7176ee4e3009b45dd8)も参考に。
