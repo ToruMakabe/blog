@@ -31,6 +31,7 @@ Azure Functionsは、
 * 静的データをランダムに返す、かつ少量なのでメモリ上に広げてもいいが、せっかくなのでNodeと相性のいいDocumentDBを使う
 * DocumentDBではSQLでいうORDER BY RAND()のようなランダムな問い合わせを書けないため、ストアドプロシージャで実装する  #[サンプル](https://gist.github.com/murdockcrc/12266f9d844be416a6a0)
 * FunctionsとGithubを連携し、GithubへのPush -> Functionsへのデプロイというフローを作る
+* 拡張性はひとまず保留  #[この辺の話](http://qiita.com/yoichiro@github/items/6d4c7309210af20a5c8f)
 
 ひとまずFunctionsとBotの枠組みの理解をゴールとします。ロジックをたくさん書けばそれなりに文脈を意識した返事はできるのですが、書かずに済む仕組みがこれからいろいろ出てきそうなので、書いたら負けの精神でぐっと堪えます。
 
