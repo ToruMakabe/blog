@@ -185,7 +185,7 @@ module.exports = function (context, req) {
 * それがmessageイベントで、テキストが入っていれば、sendTextMessage関数を呼びます
     * 好みは聞いてないので、以降、受け取ったテキストが読まれることはありませんが
 * sendTextMessage関数内、getDataFromDocDB関数呼び出しでDocumentDBへ問い合わせてビールと文末表現をランダムに取り出します
-    * コレクション"beer"、"eom(end of message)"のスキーマはそれぞれこんな感じ
+    * コレクション"beer"、"eom(end of message)"の構造はそれぞれこんな感じ
     
 ```
 {
@@ -207,4 +207,4 @@ module.exports = function (context, req) {
 いかがでしょう。好みを聞かない気まぐれBotとはいえ、気軽に作れることが伝わったかと思います。
 
 ## 動きに興味のある人は
-Facebookで"MakaBeer"を検索し、メッセージ打ってみてください。検証用途なので、メンテナンス中は止めますし、いずれ消す可能性は大ですが。。。
+Facebookで"MakaBeer"を検索し、メッセージ打ってみてください。検証用途なので、メンテナンス中は止めますし、いずれ消す可能性は大ですけれども。
