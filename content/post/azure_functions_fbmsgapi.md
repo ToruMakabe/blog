@@ -85,6 +85,7 @@ D:\home\site\wwwroot
 ├── host.json
 ├── README.md
 ```
+なお、DocumentDBのSDKパッケージは、なぜかfb-message-callbackローカルに置くと読み込まれないため、暫定的にルートへ配置しています。
 
 ではFunction Appの実体、index.jsを見てみましょう。
 
