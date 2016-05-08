@@ -204,4 +204,7 @@ module.exports = function (context, req) {
 
 * DocumentDBの2つのコレクションへの問い合わせが終わった後、Facebookへメッセージを返すため、逐次処理目的でJavaScriptの[Promise](http://azu.github.io/promises-book/)を使っています
 
+
 いかがでしょう。好みを聞かない気まぐれBotとはいえ、気軽に作れることが伝わったかと思います。
+
+*なお、Botの外部公開には審査が必要とのことです*
