@@ -207,4 +207,4 @@ module.exports = function (context, req) {
 
 いかがでしょう。好みを聞かない気まぐれBotとはいえ、気軽に作れることが伝わったかと思います。
 
-*なお、Botの外部公開には審査が必要とのことです*
+*"なお、Facebook Messenger API連動アプリの外部公開には、審査が必要とのことです"*
