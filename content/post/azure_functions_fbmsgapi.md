@@ -31,7 +31,7 @@ Azure Functionsは、
 * 静的データをランダムに返す、かつ少量なのでメモリ上に広げてもいいが、せっかくなのでNodeと相性のいいDocumentDBを使う
 * DocumentDBではSQLでいうORDER BY RAND()のようなランダムな問い合わせを書けないため、ストアドプロシージャで実装する  #[サンプル](https://gist.github.com/murdockcrc/12266f9d844be416a6a0)
 * FunctionsとGithubを連携し、GithubへのPush -> Functionsへのデプロイというフローを作る
-* 拡張性はひとまず保留  #[この辺の話](http://qiita.com/yoichiro@github/items/6d4c7309210af20a5c8f)
+* 拡張性はひとまず目をつぶる  #[この辺の話](http://qiita.com/yoichiro@github/items/6d4c7309210af20a5c8f)
 
 ひとまずFunctionsとBotの枠組みの理解をゴールとします。ロジックをたくさん書けばそれなりに文脈を意識した返事はできるのですが、書かずに済む仕組みがこれからいろいろ出てきそうなので、書いたら負けの精神でぐっと堪えます。
 
@@ -40,34 +40,34 @@ Azure Functionsは、
 以下が必要な作業の流れです。
 
 * Azureで
-    * Function Appの作成  #順番1
-    * Bot用Functionの作成 #順番2
-    * Facebook Messenger APIとの接続検証  #順番6
-    * Facebook Messenger API接続用Tokenの設定  #順番8
-    * DocumentDBのデータベース、コレクション作成、ドキュメント投入  #順番9
-    * DocumentDBのストアドプロシージャ作成  #順番10
-    * Function Appを書く  #順番11
-    * FunctionsのサイトにDocumentDB Node SDKを導入 #順番12
-    * Function AppのGithub連携設定  #順番13
-    * Function Appのデプロイ (GithubへのPush)  #順番14
+    * Function Appの作成  #1
+    * Bot用Functionの作成 #2
+    * Facebook Messenger APIとの接続検証  #6
+    * Facebook Messenger API接続用Tokenの設定  #8
+    * DocumentDBのデータベース、コレクション作成、ドキュメント投入  #9
+    * DocumentDBのストアドプロシージャ作成  #10
+    * Function Appを書く  #11
+    * FunctionsのサイトにDocumentDB Node SDKを導入 #12
+    * Function AppのGithub連携設定  #13
+    * Function Appのデプロイ (GithubへのPush)  #14
 * Facebookで
-    * Facebook for Developersへの登録  #順番3
-    * Botをひも付けるFacebook Pageの作成  #順番4
-    * Bot用マイアプリの作成  #順番5
-    * Azure Functionsからのcallback URLを登録、接続検証  #順番6
-    * Azure Functions向けTokenを生成 #順番7
+    * Facebook for Developersへの登録  #3
+    * Botをひも付けるFacebook Pageの作成  #4
+    * Bot用マイアプリの作成  #5
+    * Azure Functionsからのcallback URLを登録、接続検証  #6
+    * Azure Functions向けTokenを生成 #7
 
 アプリのコード書きの他はそれほど重くない作業ですが、すべての手順を書くと本ができそうです。Function Appの作りにポイントを絞りたいので、以下、参考になるサイトをご紹介します。
 
-* Function Appを書くまで、順番1〜2、5〜8は、[こちらのブログエントリ](http://oauth.jp/blog/2016/04/19/fb-message-callback-with-azure-function/)がとても参考になります。
-* Facebook for Developersへの登録、順番3は、https://developers.facebook.com/ から。いきなり迷子の人は、[こちら](http://qiita.com/k_kuni/items/3d7176ee4e3009b45dd8)も参考に。
+* Function Appを書くまで、#1〜2、#5〜8は、[こちらのブログエントリ](http://oauth.jp/blog/2016/04/19/fb-message-callback-with-azure-function/)がとても参考になります。
+* Facebook for Developersへの登録、#3は、https://developers.facebook.com/ から。いきなり迷子の人は、[こちら](http://qiita.com/k_kuni/items/3d7176ee4e3009b45dd8)も参考に。
 * Facebook Pageの作成は、[ここ](http://allabout.co.jp/gm/gc/387840/)を。Botで楽しむだけなら細かい設定は後回しでいいです。
 * DocumentDBについては、[公式](https://azure.microsoft.com/ja-jp/documentation/articles/documentdb-introduction/)を。
      * [DBアカウント〜コレクション作成](https://azure.microsoft.com/ja-jp/documentation/articles/documentdb-create-account/)
      * [ドキュメントインポート](https://azure.microsoft.com/ja-jp/documentation/articles/documentdb-import-data/)
      * [ストアドプロシージャ](https://azure.microsoft.com/ja-jp/documentation/articles/documentdb-programming/)
-* FunctionsのサイトにDocumentDB Node SDKを導入する順番12は、[こちら](http://tech.guitarrapc.com/entry/2016/04/05/043723)を。コンソールからnpm installできます。     
-* Github連携設定、順番13〜14は、[こちら](http://tech.guitarrapc.com/entry/2016/04/03/051552)がとても参考になります。
+* FunctionsのサイトにDocumentDB Node SDKを導入する#12は、[こちら](http://tech.guitarrapc.com/entry/2016/04/05/043723)を。コンソールからnpm installできます。     
+* Github連携設定、#13〜14は、[こちら](http://tech.guitarrapc.com/entry/2016/04/03/051552)がとても参考になります。
 
 ## Function Appのサンプル
 
@@ -207,6 +207,6 @@ module.exports = function (context, req) {
 * DocumentDBの2つのコレクションへの問い合わせが終わった後、Facebookへメッセージを返すため、逐次処理目的でJavaScriptの[Promise](http://azu.github.io/promises-book/)を使っています
 
 
-いかがでしょう。好みを聞かない気まぐれBotとはいえ、気軽に作れることが伝わったかと思います。
+いかがでしょう。好みを聞かない気まぐれBotとはいえ、気軽に作れることがわかりました。ゼロからこの手のイベント処理を作るの、面倒ですものね。
 
 *"なお、Facebook Messenger API連動アプリの外部公開には、審査が必要とのことです"*
