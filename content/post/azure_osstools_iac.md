@@ -2,7 +2,7 @@
 Categories = ["Azure"]
 Tags = ["Azure", "Vagrant", "Docker"]
 date = "2016-05-13T18:00:00+09:00"
-title = "VagranとDockerによるAzure向けOSS開発・管理端末のコード化"
+title = "VagrantとDockerによるAzure向けOSS開発・管理端末のコード化"
 
 +++
 
