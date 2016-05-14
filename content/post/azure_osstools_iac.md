@@ -42,6 +42,8 @@ VagrantとDockerで解決します。
 3. Vagrant Putty Plugin(vagrant-multi-putty)を[インストール](https://github.com/nickryand/vagrant-multi-putty) #Windowsのみ。Puttyは別途入れてください
 4. 作業フォルダを作り、Vagrant ファイルを書く
 
+もしWindowsでうまく動かない時は、Hyper-Vが有効になっていないか確認しましょう。Virtualboxと共存できません。
+
 ## サンプル解説
 OSSなAzurerである、わたしのVagrantfileです。日々環境に合わせて変えてますが、以下は現時点でのスナップショット。
 
