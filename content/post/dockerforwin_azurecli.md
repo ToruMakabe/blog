@@ -34,7 +34,7 @@ title = "Docker for WindowsでインストールレスAzure CLI環境を作る"
 ## PowerShellのfunctionを作る
 ここが作業のハイライト。
 
-PowerShellのプロファイルを編集します。エディタはなんでもいいですが、VS Codeがおすすめです。[Azure Resource manager Template](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)や[Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)むけextensionがあります。
+PowerShellのプロファイルを編集します。ところでエディタはなんでもいいのですが、AzureやDockerをがっつり触る人にはVS Codeがおすすめです。[Azure Resource manager Template](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)や[Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)むけextensionがあります。
 
 ```
 PS C:\Workspace\dockereval\arm> code $profile
