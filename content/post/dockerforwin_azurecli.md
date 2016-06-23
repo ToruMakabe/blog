@@ -13,11 +13,11 @@ title = "Docker for WindowsでインストールレスAzure CLI環境を作る"
 * Docker for Windows(on Client Hyper-V)のベータが一般開放された
 * Dockerもそうだが、Hyper-V前提のツールが今後増えそう、となると、それとぶつかるVirtualBoxをぼちぼちやめたい
 * 月一ペースでアップデートされるAzure CLIをいちいちインストールしたくない、コンテナ引っ張って以上、にしたい
-* 作業端末の環境を汚したくない、いつでもきれいに作り直せるようにしたい
+* 開発端末の環境を汚したくない、いつでもきれいに作り直せるようにしたい
 * ○○レスって言ってみたかった
 
 ## やり口
-* Docker for Windows (on Client Hyper-V)
+* もちろんDocker for Windows (on Client Hyper-V) を使う
 * いちいちdocker run...と打たなくていいよう、エイリアス的にPowerShellのfunction "azure_cli" を作る
 * "azure_cli"入力にてAzure CLIコンテナを起動
 * コンテナとホスト(Windows)間でファイル共有、ホスト側のIDEなりエディタを使えるようにする
@@ -28,6 +28,7 @@ title = "Docker for WindowsでインストールレスAzure CLI環境を作る"
     * Hyper-Vの有効化を忘れずに
     * Hyper-VとぶつかるVirtualBoxとはお別れです
     * Docker for Windowsの起動時にIPをとれないケースがありますが、その場合はsettings -> Network から、設定変えずにApplyしてみてください。いまのところこれで対処できています。この辺はベータなので今後の調整を期待しましょう。
+    * 共有ドライブも共有が外れていることが。settings -> Shared Drives で共有しなおしてください。
 * PowerShell functionを作成
     * のちほど詳しく
 
@@ -50,7 +51,7 @@ function azure_cli {
 
 * エイリアスでなくfunctionにした理由は、引数です。エイリアスだと引数を渡せないので
 * コンテナが溜まるのがいやなので、--rmで都度消します
-* 毎度 azure login しなくていいよう、トークンをホストの${HOME}/.azureに保管し、コンテナと -v オプションで共有します
+* 毎度 azure login しなくていいよう、トークンが保管されるコンテナの/root/azureディレクトリをホストの${HOME}/.azureと-v オプションで共有します
 * ARM TemplateのJSONファイルなど、ホストからファイルを渡したいため、カレントディレクトリ ${PWD} をコンテナと -v オプションで共有します
 * コンテナはdocker hubのMicrosoft公式イメージ、latestを引っ張ります。latestで不具合あればバージョン指定してください
 
@@ -79,7 +80,7 @@ PS C:\Workspace\dockereval\arm> azure_cli
 root@be41d3389a21:/data#
 ```
 
-コンテナを起動し、入出力をつなぎました。
+コンテナを起動し、入出力をつなぎました。ここからは頭と手をLinuxに切り替えてください。公式Azure CLIコンテナは[debianベース](https://hub.docker.com/r/microsoft/azure-cli/~/dockerfile/)です。
 
 ファイル共有できているか確認。
 
