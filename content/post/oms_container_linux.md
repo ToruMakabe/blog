@@ -20,7 +20,7 @@ OMS Container Solution for Linuxのプレビューが[はじまりました](htt
 
 1がコンテナ的でいいですよね。実現イメージはこんな感じです。
 
-![OMS Agent Installation Type](https://msdnshared.blob.core.windows.net/media/2016/08/3-OMS-082416.png)
+![OMS Agent Installation Type](https://msdnshared.blob.core.windows.net/media/2016/08/3-OMS-082416.png "from microsoft.com")
 
 これであれば、CoreOSのような「コンテナホストはあれこれいじらない」というポリシーのディストリビューションにも対応できます。
 
@@ -42,9 +42,9 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 以上。これでOMSポータルからログ分析ができます。こんな感じで。
 
-![Dashboard1](https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/log-analytics-containers/20160824105310/containers-dash01.png)
+![Dashboard1](https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/log-analytics-containers/20160824105310/containers-dash01.png "from microsoft.com")
 
-![Dashboard2](https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/log-analytics-containers/20160824105310/containers-dash02.png)
+![Dashboard2](https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/log-analytics-containers/20160824105310/containers-dash02.png "from microsoft.com")
 
 なんと簡単じゃありませんか。詳細が気になるかたは、[こちら](https://azure.microsoft.com/ja-jp/documentation/articles/log-analytics-containers/)から。
 
