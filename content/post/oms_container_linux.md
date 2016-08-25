@@ -7,7 +7,7 @@ title = "OMSでLinuxコンテナのログを分析する"
 +++
 
 ## OMS Container Solution for Linux プレビュー開始
-OMS OMS Container Solution for Linuxのプレビューが[はじまりました](https://blogs.technet.microsoft.com/msoms/2016/08/24/announcing-public-preview-oms-container-solution-for-linux/)。OMSのログ分析機能は500MB/日のログ転送まで無料で使えるので、利用者も多いのではないでしょうか。
+OMS Container Solution for Linuxのプレビューが[はじまりました](https://blogs.technet.microsoft.com/msoms/2016/08/24/announcing-public-preview-oms-container-solution-for-linux/)。OMSのログ分析機能は500MB/日のログ転送まで無料で使えるので、利用者も多いのではないでしょうか。
 
 さて、このたびプレビュー開始したLinuxコンテナのログ分析機能、サクッと使えるので紹介します。まだプレビューなので、仕様が変わったらごめんなさい。
 
