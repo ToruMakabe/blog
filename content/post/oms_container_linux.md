@@ -46,6 +46,6 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 ![Dashboard2](https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/log-analytics-containers/20160824105310/containers-dash02.png)
 
-なんと簡単じゃありませんか。詳細が気になるかたは、[こちら](https://azure.microsoft.com/ja-jp/documentation/articles/log-analytics-containers/#containers-data-collection-details)から。
+なんと簡単じゃありませんか。詳細が気になるかたは、[こちら](https://azure.microsoft.com/ja-jp/documentation/articles/log-analytics-containers/)から。
 
 なお、フィードバック[熱烈歓迎](https://blogs.technet.microsoft.com/msoms/2016/08/24/announcing-public-preview-oms-container-solution-for-linux/)だそうです。
