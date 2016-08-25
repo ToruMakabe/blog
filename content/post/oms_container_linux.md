@@ -29,7 +29,7 @@ OMS OMS Container Solution for Linuxのプレビューが[はじまりました]
 ## 手順
 * OMSのログ分析機能を有効化しワークスペースを作成、IDとKeyを入手 ([参考](https://azure.microsoft.com/ja-jp/documentation/articles/log-analytics-get-started/))
   * Azureのサブスクリプションを持っている場合、"[Microsoft Azure を使用した迅速なサインアップ](https://azure.microsoft.com/ja-jp/documentation/articles/log-analytics-get-started/#microsoft-azure)"から読むと、話が早いです
-* ソリューションギャラリーから、"Containers"を追加
+* OMSポータルのソリューションギャラリーから、"Containers"を追加
 * UbuntuにDockerを導入
   * [参考](https://docs.docker.com/engine/installation/linux/ubuntulinux/)
   * 現在、OMSエージェントが対応するDockerバージョンは 1.11.2までなので、たとえばUbuntu 16.04の場合は sudo apt-get install docker-engine=1.11.2-0~xenial とするなど、バージョン指定してください
