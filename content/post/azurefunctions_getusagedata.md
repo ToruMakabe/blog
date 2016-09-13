@@ -90,7 +90,7 @@ Azure Functionsの特徴である、TriggerとBindingsを定義します。サ�
   * なのでサンプルではOutput Binding使わずに書きました
   * Input/Outputを使える他のTriggerでは、楽なのでぜひ活用してください
 
-## 豆知識 (Azure Billing API)
+## 豆知識 (Azure Usage API)
 * Resource Usage APIは使用量のためのAPIなので、料金に紐づけたい場合は、[Ratecard API](https://azure.microsoft.com/ja-jp/documentation/articles/billing-usage-rate-card-overview/)を組み合わせてください
 
 
