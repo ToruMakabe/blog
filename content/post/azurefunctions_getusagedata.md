@@ -9,7 +9,7 @@ title = "Azure Functionsで運用管理サーバレス生活(使用量データ�
 ## 背景と動機
 Azure Functions使ってますか。「サーバレス」という、ネーミングに突っ込みたい衝動を抑えられないカテゴリに属するため損をしている気もしますが、システムのつくり方を変える可能性がある、潜在能力高めなヤツです。キャッチアップして損はないです。
 
-さて、Azure Functionsを使ってAzureの使用量データを取得、蓄積したいというリクエスト最近いくつかいただきました。いい機会なのでまとめておきます。以下、その背景。
+さて、Azure Functionsを使ってAzureの使用量データを取得、蓄積したいというリクエストを最近いくつかいただきました。いい機会なのでまとめておきます。以下、その背景。
 
 * 運用管理業務がビジネスの差別化要素であるユーザは少ない。可能な限り省力化したい。運用管理ソフトの導入維持はもちろん、その土台になるサーバの導入、維持は真っ先に無くしたいオーバヘッド。もうパッチ当てとか監視システムの監視とか、やりたくない。
 * Azure自身が持つ運用管理の機能が充実し、また、運用管理SaaS([MS OMS](https://www.microsoft.com/ja-jp/server-cloud/products-operations-management-suite.aspx)、New Relic、Datadogなど)が魅力的になっており、使い始めている。いつかは運用管理サーバを無くしたい。
@@ -39,7 +39,7 @@ Azure Functions使ってますか。「サーバレス」という、ネーミ�
 * Function Appを作成
   * ポータル左上"+新規" -> Web + モバイル -> Function App
   * アプリ名は.azurewebsites.net空間でユニークになるように
-  * App Seriviceプランは、占有型の"クラシック"か、共有で実行した分課金の"動的"かを選べます。今回の使い方だと動的がお得でしょう
+  * App Seriviceプランは、占有型の"クラシック"か、共有で実行したぶん課金の"動的"かを選べます。今回の使い方だと動的がお得でしょう
   * メモリは128MBあれば十分です
   * 他のパラメータはお好みで
 * 環境変数の設定
@@ -90,7 +90,7 @@ Azure Functionsの特徴である、TriggerとBindingsを定義します。サ�
   * なのでサンプルではOutput Binding使わずに書きました
   * Input/Outputを使える他のTriggerでは、楽なのでぜひ活用してください
 
-## 豆知識 (Azure Billing API)
+## 豆知識 (Azure Usage API)
 * Resource Usage APIは使用量のためのAPIなので、料金に紐づけたい場合は、[Ratecard API](https://azure.microsoft.com/ja-jp/documentation/articles/billing-usage-rate-card-overview/)を組み合わせてください
 
 
