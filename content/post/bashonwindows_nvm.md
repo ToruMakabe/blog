@@ -11,7 +11,7 @@ Windows 10 Anniversary Updateでベータ提供がはじまったBash on Ubuntu 
 
 たとえばNodeのバージョン管理。Windowsには[nodist](https://github.com/marcelklehr/nodist)がありますが、Linux/Macでは動きません。Linux/Macで使ってる[NVM](https://github.com/creationix/nvm)がWindowsで動いたら、いくつもバージョン管理ツールを覚えずに済むのに！あ、Bash on Windowsあるよ！！おお、そうだな！！！という話です。
 
-最近、Azure FunnctionでNode v6.4.0が[使えるようになった](https://blogs.msdn.microsoft.com/appserviceteam/2016/09/01/azure-functions-0-5-release-august-portal-update/)ので、「これからバージョン管理どうすっかな」と考えていた人も多いのでは。それはわたしです。
+最近、Azure FunctionsでNode v6.4.0が[使えるようになった](https://blogs.msdn.microsoft.com/appserviceteam/2016/09/01/azure-functions-0-5-release-august-portal-update/)ので、「これからバージョン管理どうすっかな」と考えていた人も多いのでは。それはわたしです。
 
 ## NVMのインストール
 * Bash on Ubuntu on Windowsを入れます ([参考](http://www.atmarkit.co.jp/ait/articles/1608/08/news039.html))
