@@ -52,9 +52,10 @@ Azure Functions使ってますか。「サーバレス」という、ネーミ�
   * Function Appへポータルからアクセス -> Function Appの設定 -> 継続的インテグレーションの構成 -> セットアップ
   * Githubリポジトリとブランチを設定し、同期を待ちます
 * Nodeのモジュールをインストール
-  * Function Appへポータルからアクセス -> Function Appの設定 -> kuduに移動 -> site/wwwroot/getUsageData へ移動
-  * このディレクトリが、実行する関数、functionの単位です
-  * "npm install" を実行 (package.jsonの定義に従ってNodeのモジュールが”node_modules"へインストールされます)
+  * ~~Function Appへポータルからアクセス -> Function Appの設定 -> kuduに移動 -> site/wwwroot/getUsageData へ移動~~
+  * ~~このディレクトリが、実行する関数、functionの単位です~~
+  * ~~"npm install" を実行 (package.jsonの定義に従ってNodeのモジュールが”node_modules"へインストールされます)~~
+  * deploy.cmd で自動的にインストールするよう変えました
 
 これで、指定ストレージアカウントの"usagedata"コンテナに日次で使用量データファイルができます。
 
