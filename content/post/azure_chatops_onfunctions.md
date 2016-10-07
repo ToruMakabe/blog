@@ -44,6 +44,8 @@ Githubに上げておきました。
   * パラメータファイルのサンプルは[sample.azuredeploy.parameters.json](https://github.com/ToruMakabe/AZChatOpsSample/blob/master/sample.azuredeploy.parameters.json)です。GUIでデプロイするにしても、パラメータの意味を理解するためにざっと読むと幸せになれると思います
 
   * Function AppのデプロイはGithubからのCIです。クローンしたリポジトリとブランチを指定してください
+  
+  * GithubからのCIは、[はじめてのケースを考慮し](https://azure.microsoft.com/ja-jp/documentation/articles/app-service-deploy-complex-application-predictably/)ARM Templateのリソースプロパティ"IsManualIntegration"をtrueにしています
 
   * Azure Automationのジョブ実行権限を持つサービスプリンシパルが必要です (パラメータ SUBSCRIPTION_ID、TENANT_ID、CLIENT_ID、CLIENT_SECRET で指定)
 
