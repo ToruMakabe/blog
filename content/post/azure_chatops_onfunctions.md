@@ -26,7 +26,7 @@ AzureでChatOpsと言えば、Auth0のSandrino Di Mattia氏が作った素敵な
 
 Githubに上げておきました。
 
-[AZChatOpsSmaple](https://github.com/ToruMakabe/AZChatOpsSample)
+[AZChatOpsSample](https://github.com/ToruMakabe/AZChatOpsSample)
 
 
 ## おおまかな流れ
