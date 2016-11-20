@@ -6,12 +6,12 @@ title = "Azure App Service on LinuxのコンテナをCLIで更新する方法"
 
 +++
 
-## CLIでコンテナを更新しよう
+## CLIでコンテナを更新したい
 Connect(); 2016にあわせ、Azure App Service on Linuxのコンテナ対応が[発表](https://azure.microsoft.com/en-us/blog/app-service-on-linux-now-supports-containers-and-asp-net-core/)されました。Azure Container Serviceほどタップリマシマシな環境ではなく、サクッと楽してコンテナを使いたい人にオススメです。
 
 さっそくデプロイの自動化どうすっかな、と検討している人もちらほらいらっしゃるようです。CI/CD側でビルド、テストしたコンテナをAPIなりCLIでApp Serviceにデプロイするやり口、どうしましょうか。
 
-まだプレビューなのでAzure、VSTSなどCI/CD側の機能追加が今後あると思いますし、使い方がこなれてベストプラクティスが生まれるとは思いますが、アーリーアダプターなあなた向けに、現時点でできることを書いておきます。
+まだプレビューなのでAzureも、VSTSなどCI/CD側も機能追加が今後あると思いますし、使い方がこなれてベストプラクティスが生まれるとは思いますが、アーリーアダプターなあなた向けに、現時点でできることを書いておきます。
 
 ## Azure CLI 2.0
 Azure CLI 2.0に"appservice web config container"コマンドがあります。これでコンテナイメージを更新できます。
