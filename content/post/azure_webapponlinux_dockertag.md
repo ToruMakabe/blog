@@ -7,7 +7,7 @@ title = "Azure App Service on LinuxのコンテナをCLIで更新する方法"
 +++
 
 ## CLIでコンテナを更新しよう
-Connect(); 2016にあわせ、Azure App on Linuxのコンテナ対応が[発表](https://azure.microsoft.com/en-us/blog/app-service-on-linux-now-supports-containers-and-asp-net-core/)されました。Azure Container Serviceほどタップリマシマシな環境ではなく、サクッと楽してコンテナを使いたい人にオススメです。
+Connect(); 2016にあわせ、Azure App Service on Linuxのコンテナ対応が[発表](https://azure.microsoft.com/en-us/blog/app-service-on-linux-now-supports-containers-and-asp-net-core/)されました。Azure Container Serviceほどタップリマシマシな環境ではなく、サクッと楽してコンテナを使いたい人にオススメです。
 
 さっそくデプロイの自動化どうすっかな、と検討している人もちらほらいらっしゃるようです。CI/CD側でビルド、テストしたコンテナをAPIなりCLIでApp Serviceにデプロイするやり口、どうしましょうか。
 
