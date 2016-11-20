@@ -19,7 +19,7 @@ Azure CLI 2.0に"appservice web config container"コマンドがあります。�
 すでにyourrepoレポジトリのyourcontainerコンテナ、タグ1.0.0がデプロイされているとします。
 
 ```
-$ az appservice web config container show -n yourcontainer -g YourRG
+$ az appservice web config container show -n yourcontainerapp -g YourRG
 {
   "DOCKER_CUSTOM_IMAGE_NAME": "yourrepo/yourcontainer:1.0.0"
 }
@@ -28,7 +28,7 @@ $ az appservice web config container show -n yourcontainer -g YourRG
 新ビルドのタグ1.0.1をデプロイするには、update -c オプションを使います。
 
 ```
-$ az appservice web config container update -n yourcontainer -g YourRG -c "yourrepo/yourcontainer:1.0.1"
+$ az appservice web config container update -n yourcontainerapp -g YourRG -c "yourrepo/yourcontainer:1.0.1"
 {
   "DOCKER_CUSTOM_IMAGE_NAME": "yourrepo/yourcontainer:1.0.1"
 }
