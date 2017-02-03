@@ -6,12 +6,11 @@ title = "Azure N-SeriesでPaintsChainerを動かす"
 
 +++
 
-## とても面白い
+## PaintsChainer面白い
 
 クラスメソッドさんのDevelopers.IOでのエントリ["PaintsChainerをAmazon EC2で動かしてみた"](http://dev.classmethod.jp/cloud/paintschainer-on-ec2/)に、とても刺激をうけました。
 
-畳みこみニューラルネットワークで白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと試せるのもすごい。
-
+畳みこみニューラルネットワークで白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと試せるのもいいですね。
 
 せっかくなのでAzureでもやってみようと思います。Ubuntuで動かすサンプルとして見ていただいてもいいかと。
 

@@ -8,10 +8,7 @@ build:
 
 deploy:
   steps:
-    - install-packages:
-        packages: git ssh-client
-    - lukevivier/gh-pages@0.2.1:
-        token: $GIT_TOKEN
-        repo: ToruMakabe/torumakabe.github.io
-        branch: master
+    - leipert/git-push:
+        gh_oauth: $GIT_TOKEN
         basedir: public
+        repo: ToruMakabe/torumakabe.github.io
