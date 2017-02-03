@@ -79,3 +79,4 @@ VMのパブリックIP、ポート80番にアクセスすると、先ほどコ�
 ![結果](https://raw.githubusercontent.com/ToruMakabe/Images/master/paintschainer_cloudia.png "Cloudia")
 
 PaintsChainer、すごいなぁ。
+クラウディアさん、おなか寒そうだけど。
