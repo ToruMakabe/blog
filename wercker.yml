@@ -5,10 +5,13 @@ build:
         version: "0.17"
         theme: purehugo
         flags: --buildDrafts=true	
+
 deploy:
-  steps:
-    - leipert/git-push:
-        gh_oauth: $GIT_TOKEN
-        gh_pages_domain: torumakabe.github.io
-        basedir: public
-        repo: ToruMakabe/torumakabe.github.io
+    steps:
+        - install-packages:
+            packages: git ssh-client
+        - leipert/git-push:
+            gh_oauth: $GIT_TOKEN
+            repo: ToruMakabe/torumakabe.github.io
+            branch: master
+            basedir: public
