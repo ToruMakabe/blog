@@ -8,7 +8,10 @@ build:
 
 deploy:
   steps:
+    - install-packages:
+        packages: git ssh-client
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
-        basedir: public
         repo: ToruMakabe/torumakabe.github.io
+        branch: master
+        basedir: public
