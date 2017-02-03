@@ -10,15 +10,15 @@ title = "Azure N-SeriesでPaintsChainerを動かす"
 
 クラスメソッドさんのDevelopers.IOでのエントリ["PaintsChainerをAmazon EC2で動かしてみた"](http://dev.classmethod.jp/cloud/paintschainer-on-ec2/)が、とても面白いです。
 
-畳みこみニューラルネットワークで白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと試せるのもいいですね。
+畳みこみニューラルネットワークを駆使して白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと動かせるのもいいですね。
 
-せっかくなのでAzureでもやってみようと思います。AzurerにはN-Series & NDIVIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintChainerを動かす参考手順として見ていただいてもいいかと。
+せっかくなのでAzureでもやってみようと思います。AzurerはN-Series & NDIVIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintChainerを動かす参考手順として見ていただいてもいいかと。
 
 ## 試した環境
 * 米国中南部リージョン
 * Standard NC6 (6 コア、56 GB メモリ、NVIDIA Tesla K80)
 * Ubuntu 16.04
-* NSGはSSH(22)以外にHTTP(80)を受信許可
+* NSGはSSH(22)の他にHTTP(80)を受信許可
 
 ## 導入手順
 
