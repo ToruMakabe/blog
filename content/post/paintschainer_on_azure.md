@@ -12,7 +12,7 @@ title = "Azure N-SeriesでPaintsChainerを動かす"
 
 畳みこみニューラルネットワークを駆使して白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと動かせるのもいいですね。
 
-せっかくなのでAzureでもやってみようと思います。AzurerはN-Series & NDIVIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintChainerを動かす参考手順として見ていただいてもいいかと。
+せっかくなのでAzureでもやってみようと思います。AzurerはN-Series & NDIVIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintsChainerを動かす参考手順として見ていただいてもいいかと。
 
 ## 試した環境
 * 米国中南部リージョン
@@ -72,9 +72,9 @@ Liam Jones氏が公開している[PaintsChainer-Docker](https://github.com/liam
 $ sudo nvidia-docker run -p 80:8000 liamjones/paintschainer-docker
 ```
 
-## PaintChainerを使ってみる
+## PaintsChainerを使ってみる
 
-VMのパブリックIP、ポート80番にアクセスすると、先ほどコンテナーで起動したPaintChanerのページが開きます。クラウディアさんの白黒画像ファイルで試してみましょう。
+VMのパブリックIP、ポート80番にアクセスすると、先ほどコンテナーで起動したPaintsChanerのページが開きます。クラウディアさんの白黒画像ファイルで試してみましょう。
 
 ![結果](https://raw.githubusercontent.com/ToruMakabe/Images/master/paintschainer_cloudia.png "Cloudia")
 
