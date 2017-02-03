@@ -1,19 +1,21 @@
 +++
 Categories = ["Azure"]
 Tags = ["Azure", "PaintsChainer", "NVIDIA"]
-date = "2017-02-03T16:30:00+09:00"
+date = "2017-02-03T17:30:00+09:00"
 title = "Azure N-SeriesでPaintsChainerを動かす"
 
 +++
 
-## 刺激をうけました
+## とても面白い
 
 クラスメソッドさんのDevelopers.IOでのエントリ["PaintsChainerをAmazon EC2で動かしてみた"](http://dev.classmethod.jp/cloud/paintschainer-on-ec2/)に、とても刺激をうけました。
 
 畳みこみニューラルネットワークで白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと試せるのもすごい。
 
 
-大いに刺激をうけたのでAzureでもやってみます。AzureでGPGPUが使えるVMはN-Seriesです。
+せっかくなのでAzureでもやってみようと思います。Ubuntuで動かすサンプルとして見ていただいてもいいかと。
+
+AzureでGPGPUが使えるVMはN-SeriesのNCです。
 
 ## 試した環境
 * 米国中南部リージョン

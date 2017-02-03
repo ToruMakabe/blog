@@ -8,8 +8,9 @@ build:
 
 deploy:
   steps:
-    - git-push:
-         gh_oauth: $GIT_TOKEN
-         gh_pages: true
-         gh_pages_domain: torumakabe.github.io
-         basedir: public
+    - install-packages:
+        packages: git ssh-client
+    - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        domain: torumakabe.github.io
+        basedir: public
