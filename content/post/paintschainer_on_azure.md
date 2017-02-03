@@ -66,7 +66,7 @@ Fri Feb  3 06:43:18 2017
 ```
 
 ### PaintsChainer-Dockerのインストール
-Liam Jones氏が公開している[PaintsChainer-Docker](https://github.com/liamjones/PaintsChainer-Docker)を使って、PainsChanierコンテナーを起動します。ポートマッピングはコンテナーホストの80番とコンテナーの8000番です。
+Liam Jones氏が公開している[PaintsChainer-Docker](https://github.com/liamjones/PaintsChainer-Docker)を使って、PaintsChanierコンテナーを起動します。ポートマッピングはコンテナーホストの80番とコンテナーの8000番です。
 
 ```
 $ sudo nvidia-docker run -p 80:8000 liamjones/paintschainer-docker
