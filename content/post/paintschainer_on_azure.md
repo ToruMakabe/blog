@@ -1,7 +1,7 @@
 +++
 Categories = ["Azure"]
 Tags = ["Azure", "PaintsChainer", "NVIDIA"]
-date = "2017-02-03T17:30:00+09:00"
+date = "2017-02-03T18:00:00+09:00"
 title = "Azure N-SeriesでPaintsChainerを動かす"
 
 +++
