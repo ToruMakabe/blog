@@ -74,7 +74,7 @@ $ sudo nvidia-docker run -p 80:8000 liamjones/paintschainer-docker
 
 ## PaintsChainerを使ってみる
 
-VMのパブリックIP、ポート80番にアクセスすると、先ほどコンテナーで起動したPaintsChanerのページが開きます。クラウディアさんの白黒画像ファイルで試してみましょう。
+VMのパブリックIP、ポート80番にアクセスすると、先ほどコンテナーで起動したPaintsChainerのページが開きます。クラウディアさんの白黒画像ファイルで試してみましょう。
 
 ![結果](https://raw.githubusercontent.com/ToruMakabe/Images/master/paintschainer_cloudia.png "Cloudia")
 
