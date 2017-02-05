@@ -12,7 +12,7 @@ title = "Azure N-SeriesでPaintsChainerを動かす"
 
 畳みこみニューラルネットワークを駆使して白黒線画に色付けしちゃうPaintsChainerすごい。EC2のGPUインスタンスでさくっと動かせるのもいいですね。
 
-せっかくなのでAzureでもやってみようと思います。AzurerはN-Series & NDIVIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintsChainerを動かす参考手順として見ていただいてもいいかと。
+せっかくなのでAzureでもやってみようと思います。AzurerはN-Series & NVIDIA-Dockerのサンプルとして、Azurerでない人はUbuntuでPaintsChainerを動かす参考手順として見ていただいてもいいかと。
 
 ## 試した環境
 * 米国中南部リージョン
