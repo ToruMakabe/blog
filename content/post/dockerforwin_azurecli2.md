@@ -38,7 +38,7 @@ title = "Docker for WindowsでインストールレスAzure CLI 2.0環境を作�
 PowerShellのプロファイルを編集します。ところでエディタはなんでもいいのですが、AzureやDockerをがっつり触る人にはVS Codeがおすすめです。[Azure Resource Manager Template](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)や[Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)むけextensionがあります。
 
 ```
-PS C:\Workspace\dockereval\arm> code $profile
+PS C:\Workspace\ARM> code $profile
 ```
 
 こんなfunctionを作ります。
