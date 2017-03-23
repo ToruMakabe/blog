@@ -33,7 +33,7 @@ docs.microsoft.com の整備にともない、ARMテンプレートのドキュ�
 
 Managed Diskが使えるようになって、ARMテンプレートでもストレージアカウントの定義を省略できるようになりました。Managed Diskの実体は内部的にAzureが管理するストレージアカウントに置かれるのですが、ユーザーからは隠蔽されます。
 
-Managed Diskは [Microsoft.Compute/disks](https://docs.microsoft.com/ja-jp/azure/templates/microsoft.compute/disks)  で個別に作れますが、省略もできます。[Microsoft.Compute/virtualMachines](https://docs.microsoft.com/ja-jp/azure/templates/microsoft.compute/virtualmachines) の中に書いてしまうやり口です。
+Managed Diskは [Microsoft.Compute/disks](https://docs.microsoft.com/ja-jp/azure/templates/microsoft.compute/disks)  で個別に定義できますが、省略もできます。[Microsoft.Compute/virtualMachines](https://docs.microsoft.com/ja-jp/azure/templates/microsoft.compute/virtualmachines) の中に書いてしまうやり口です。
 
 ```
 "osDisk": {
@@ -56,12 +56,12 @@ Azureのストレージサービスは、多数のサーバーで構成された
 
 [参考情報:Windows Azure ストレージ: 高可用性と強い一貫性を両立する クラウド ストレージ サービス(PDF)](http://download.microsoft.com/download/C/0/2/C02C4D26-0472-4688-AC13-199EA321135E/23rdACM_SOSP_WindowsAzureStorage_201110_jpn.pdf)
 
-可用性セットは、電源とネットワークを共有するグループである"障害ドメイン"を意識して仮想マシンを分散配置する設定です。そして、可用性セットに配置した仮想マシンに割り当てたManaged Diskは、Storage Unitを分散するように配置されます。
+可用性セットは、電源とネットワークを共有するグループである"障害ドメイン(FD: Fault Domain)"を意識して仮想マシンを分散配置する設定です。そして、可用性セットに配置した仮想マシンに割り当てたManaged Diskは、Storage Unitを分散するように配置されます。
 
 
 ![Unmanaged vs Managed](https://msdnshared.blob.core.windows.net/media/2017/03/92.jpg "Unmanaged vs Managed")
 
-すなわち、Storage Unitの障害に耐えることができます。Storage Unitは非常に可用性高く設計されており、長期運用されてきた実績もあるのですが、ダウンする可能性はゼロではありません。可用性セットとManaged Diskの組み合わせは、可用性を追求したいシステムでは、おすすめです。
+すなわち、Storage Unitの障害に耐えることができます。Storage Unitは非常に可用性高く設計されており、長期に運用されてきた実績もあるのですが、ダウンする可能性はゼロではありません。可用性セットとManaged Diskの組み合わせは、可用性を追求したいシステムでは、おすすめです。
 
 さて、この場合の可用性セット定義ですが、以下のように書きます。
 
