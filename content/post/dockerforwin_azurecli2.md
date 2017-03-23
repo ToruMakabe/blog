@@ -70,7 +70,7 @@ Mode                LastWriteTime         Length Name
 -a----       2017/02/28      8:30            374 azuredeploy.parameters.json
 ```
 
-いくつかのファイルとサブディレクトリがあります。
+いくつかのファイルがあります。
 
 コンテナを起動してみましょう。az_cli functionを呼びます。
 
