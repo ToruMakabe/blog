@@ -10,7 +10,7 @@ title = "Azure Resource Manager テンプレートでManaged Diskを作るとき
 
 * ARMテンプレートのドキュメントが使いやすくなった
 * Visual Studio CodeとAzure Resource Manager Toolsを使おう
-* ARMテンプレートでManaged OSDiskを作る時のコツ
+* ARMテンプレートでManaged Diskを作る時のコツ
 * 可用性セットを意識しよう
 
 ## ARMテンプレートのドキュメントが使いやすくなった
@@ -29,7 +29,7 @@ docs.microsoft.com の整備にともない、ARMテンプレートのドキュ�
 
 [Get VS Code and extension](https://docs.microsoft.com/ja-jp/azure/azure-resource-manager/resource-manager-create-first-template?toc=%2fazure%2ftemplates%2ftoc.json&bc=%2Fazure%2Ftemplates%2Fbreadcrumb%2Ftoc.json#get-vs-code-and-extension)
 
-## ARMテンプレートでManaged OSDiskを作る時のコツ
+## ARMテンプレートでManaged Diskを作る時のコツ
 
 Managed Diskが使えるようになって、ARMテンプレートでもストレージアカウントの定義を省略できるようになりました。Managed Diskの実体は内部的にAzureが管理するストレージアカウントに置かれるのですが、ユーザーからは隠蔽されます。
 
