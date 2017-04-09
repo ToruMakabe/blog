@@ -74,7 +74,7 @@ TCP connect statistics for 52.175.148.28:3389:
   Minimum = 8.61ms, Maximum = 9.38ms, Average = 9.00ms
 ```
 
-### Azure東日本リージョン -> Azureバックボーン -> Azure米国西海岸リージョン
+### 5. Azure東日本リージョン -> Azureバックボーン -> Azure米国西海岸リージョン
 
 ```
 TCP connect statistics for 40.83.220.19:3389:
