@@ -2,7 +2,7 @@
 Categories = ["Azure"]
 Tags = ["Azure", "Network", "Latency"]
 date = "2017-04-09T15:15:00+09:00"
-title = "AzureのLatency測定 2017/4版"
+title = "Azureユーザー視点のLatency測定 2017/4版"
 
 +++
 
