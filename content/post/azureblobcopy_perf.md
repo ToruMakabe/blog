@@ -22,16 +22,16 @@ title = "Azureでグローバルにデータをコピーするとどのくらい
 
 ### アクセス回線パターン
 1. 一般的な回線
-* 自宅(川崎)
-* OCN光 100M マンションタイプ
-* 宅内は802.11ac(5GHz)
-* 川崎でアクセス回線に入り、横浜(保土ヶ谷)の局舎からインターネットへ
-  * ゲートウェイ名から推測
+  * 自宅(川崎)
+  * OCN光 100M マンションタイプ
+  * 宅内は802.11ac(5GHz)
+  * 川崎でアクセス回線に入り、横浜(保土ヶ谷)の局舎からインターネットへ
+    * ゲートウェイ名から推測
 
 2. いい感じの回線
-* 日本マイクロソフト 品川オフィス
-* 1Gbps 有線
-* Azureデータセンターへ「ネットワーク的に近くて広帯域」
+  * 日本マイクロソフト 品川オフィス
+  * 1Gbps 有線
+  * Azureデータセンターへ「ネットワーク的に近くて広帯域」
 
 ### コピーするファイル
 * 総容量: 約60GB
@@ -61,16 +61,16 @@ title = "Azureでグローバルにデータをコピーするとどのくらい
 
 |　形式　|　From　|　To　|　Command　|　並列数　|　実行時間(時:分:秒)　|
 |  -----------:  |  :-----------:  |  :------------:  |  :------------:  |  ------------:  |  ------------:  |
-|ファイル|  自宅  |  Azure 東日本  |  AzCopy Upload  |2|7:55:22|
-|ファイル|  自宅  |  Azure 米国中南部  |  AzCopy Upload  |2|10:22:30|
-|ファイル|  自宅  |  Azure ブラジル南部  |  AzCopy Upload  |2|12:46:37|
-|ファイル|  オフィス  |  Azure 東日本  |  AzCopy Upload  |16|00:20:47|
-|ファイル|  オフィス  |  Azure 米国中南部  |  AzCopy Upload  |16|00:45.11|
-|ファイル|  オフィス  |  Azure ブラジル南部  |  AzCopy Upload  |8|02:07.58|
-|ファイル|  Azure 東日本  |  Azure 米国中南部  |  AzCopy Copy  |N/A|00:28:55|
-|イメージ|  Azure 東日本  |  Azure 米国中南部  |  PowerShell Start-AzureStorageBlobCopy  |N/A|00:11:11|
-|ファイル|  Azure 東日本  |  Azure ブラジル南部  |  Copy  |N/A|00.25:33|
-|イメージ|  Azure 東日本  |  Azure ブラジル南部  |  PowerShell Start-AzureStorageBlobCopy  |N/A|00.09:20|
+|　ファイル　|  自宅  |  Azure 東日本  |  AzCopy Upload  |2|7:55:22|
+|　ファイル　|  自宅  |  Azure 米国中南部  |  AzCopy Upload  |2|10:22:30|
+|　ファイル　|  自宅  |  Azure ブラジル南部  |  AzCopy Upload  |2|12:46:37|
+|　ファイル　|  オフィス  |  Azure 東日本  |  AzCopy Upload  |16|00:20:47|
+|　ファイル　|  オフィス  |  Azure 米国中南部  |  AzCopy Upload  |16|00:45.11|
+|　ファイル　|  オフィス  |  Azure ブラジル南部  |  AzCopy Upload  |8|02:07.58|
+|　ファイル　|  Azure 東日本  |  Azure 米国中南部  |  AzCopy Copy  |N/A|00:28:55|
+|　イメージ　|  Azure 東日本  |  Azure 米国中南部  |  PS Start-AzureStorageBlobCopy  |N/A|00:11:11|
+|　ファイル　|  Azure 東日本  |  Azure ブラジル南部  |  Copy  |N/A|00.25:33|
+|　イメージ　|  Azure 東日本  |  Azure ブラジル南部  |  PS Start-AzureStorageBlobCopy  |N/A|00.09:20|
 
 ## 考察
 * アクセス回線の差が大きく影響
