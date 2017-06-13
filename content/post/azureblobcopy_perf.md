@@ -68,9 +68,9 @@ title = "Azureでグローバルにデータをコピーするとどのくらい
 |　ファイル　|  オフィス  |  Azure 米国中南部  |  AzCopy Upload  |16|00:45.11|
 |　ファイル　|  オフィス  |  Azure ブラジル南部  |  AzCopy Upload  |8|02:07.58|
 |　ファイル　|  Azure 東日本  |  Azure 米国中南部  |  AzCopy Copy  |N/A|00:28:55|
-|　イメージ　|  Azure 東日本  |  Azure 米国中南部  |  PS Start-AzureStorageBlobCopy  |N/A|00:11:11|
+|　イメージ　|  Azure 東日本  |  Azure 米国中南部  |  PowerShell  |N/A|00:11:11|
 |　ファイル　|  Azure 東日本  |  Azure ブラジル南部  |  Copy  |N/A|00.25:33|
-|　イメージ　|  Azure 東日本  |  Azure ブラジル南部  |  PS Start-AzureStorageBlobCopy  |N/A|00.09:20|
+|　イメージ　|  Azure 東日本  |  Azure ブラジル南部  |  PowerShell  |N/A|00.09:20|
 
 ## 考察
 * アクセス回線の差が大きく影響
