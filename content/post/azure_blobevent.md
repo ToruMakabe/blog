@@ -16,7 +16,7 @@ Event Gridは、Azureで発生した様々なイベントを検知してWebhook�
 
 イベントの発生元をPublisherと呼びますが、このたびPublisherとしてAzureのBlobがサポートされました。Blobの作成、削除イベントを検知し、Event GridがWebhookで通知します。通知先はHandlerと呼びます。Publisherとそこで拾うイベント、Handlerを紐づけるのがSubscriptionです。Subcriptionにはフィルタも定義できます。
 
-![コンセプト](https://docs.microsoft.com/en-us/azure/storage/blobs/media/storage-blob-event-overview/event-grid-functional-model.png "Concept")
+![コンセプト](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/ff3644c9-58ab-4729-8939-66a83ab0605d.png "Concept")
 
 Event Gridに期待する理由はいくつかあります。
 
