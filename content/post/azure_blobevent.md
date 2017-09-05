@@ -164,8 +164,6 @@ using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 
 public static void Run(EventGridEvent eventGridEvent, out string outputQueueItem, TraceWriter log)
 {
-    log.Info(eventGridEvent.Data["url"].ToString());
-
     string imageUrl = eventGridEvent.Data["url"].ToString();
     outputQueueItem = System.IO.Path.GetFileName(imageUrl);
 }
