@@ -14,7 +14,7 @@ Event GridがBlobのイベントを拾えるように[なりました](https://a
 ## Event GridがBlobに対応して何がうれしいか
 Event Gridは、Azureで発生した様々なイベントを検知してWebhookで通知するサービスです。カスタムトピックも作成できます。
 
-イベントの発生元をPublisherと呼びますが、このたびPublisherとしてAzureのBlobがサポートされました。Blobの作成、削除イベントを検知し、Event GridがWebhookで通知します。通知先はHandlerと呼びます。Publisherとそこで拾うイベント、Handlerを紐づけるのがSubscriptionです。Subcriptionにはフィルタも定義できます。
+イベントの発生元をPublisherと呼びますが、このたびPublisherとしてAzureのBlobがサポートされました。Blobの作成、削除イベントを検知し、Event GridがWebhookで通知します。通知先はHandlerと呼びます。Publisherとそこで拾うイベント、Handlerを紐づけるのがSubscriptionです。Subscriptionにはフィルタも定義できます。
 
 ![コンセプト](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/ff3644c9-58ab-4729-8939-66a83ab0605d.png "Concept")
 
@@ -140,7 +140,7 @@ g blobeventpoc-rg --resource-name blobeventpoc01 --subject-ends-with jpeg
 Gvent Grid側の動きが確認できたので、サンプルアプリを作って検証してみましょう。Azure Functionsに画像ファイルのサイズを変えるHandlerアプリを作ってみます。
 
 ### 概要
-当初想定したのは、ひとつのファンクションで、トリガーはEventGrid、入出力バインドにBlob、という作りでした。ですが、設計を変えました。
+当初想定したのは、ひとつのファンクションで、トリガーはEventGrid、入出力バインドにBlob、という作りでした。ですが、以下のように設計を変えました。
 
 ![Bindings](https://raw.githubusercontent.com/ToruMakabe/Images/master/blobevent-function-bindings.png "Bindings")
 
@@ -152,10 +152,10 @@ Using [Azure Functions Bindings Visualizer](https://functions-visualizer.azurewe
 
 そこでイベントを受けてファイル名を取り出してQueueに入れるファンクションと、そのQueueをトリガーに画像をリサイズするファンクションに分けました。
 
-なお、この悩みはAzureの開発チームも認識しており、Functons側で対応する方針とのことです。
+なお、この悩みはAzureの開発チームも認識しており、Functions側で対応する方針とのことです。
 
 ### Handler
-C#(csx)で、Event GridからのWebhookを受けるHandlerを作ります。PublisherがBlobの場合、ペイロードにBlobのURLが入っていますので、そこからファイル名を抽出します。そのファイル名をQueueに送ります。ファンクション名はBlobEventHandlerとしました。
+C#(csx)で、Event GridからのWebhookを受けるHandlerを作ります。PublisherがBlobの場合、ペイロードにBlobのURLが入っていますので、そこからファイル名を抽出します。そして、そのファイル名をQueueに送ります。ファンクション名はBlobEventHandlerとしました。
 
 [run.csx]
 ```
@@ -233,7 +233,7 @@ public enum ImageSize
 
 private static Dictionary<ImageSize, Tuple<int, int>> imageDimensionsTable = new Dictionary<ImageSize, Tuple<int, int>>()
 {
-  { ImageSize.Small,      Tuple.Create(100, 100) }
+  { ImageSize.Small, Tuple.Create(100, 100) }
 };
 ```
 
@@ -252,7 +252,9 @@ ImageResizerのパッケージを指定します。
 }
 ```
 
-トリガーとバインドは以下の通りです。{QueueTrigger}メタデータで、QueueのペイロードをBlobのpathに使います。また、画像を保存するBlobストレージアカウントの接続文字列は、環境変数BLOB_IMAGESへ事前に設定しています。なお、リサイズ後の画像を格納するBlobコンテナーは、"images-s"として別途作成しました。コンテナー"images"をイベントの発火対象コンテナーとして、Subscriptionにフィルタを定義したいからです。
+トリガーとバインドは以下の通りです。{QueueTrigger}メタデータで、QueueのペイロードをBlobのpathに使います。ペイロードにはファイル名が入っています。
+
+また、画像を保存するBlobストレージアカウントの接続文字列は、環境変数BLOB_IMAGESへ事前に設定しています。なお、リサイズ後の画像を格納するBlobコンテナーは、"images-s"として別途作成しました。コンテナー"images"をイベントの発火対象コンテナーとして、Subscriptionにフィルタを定義したいからです。
 
 [function.json]
 ```
@@ -284,7 +286,7 @@ ImageResizerのパッケージを指定します。
 }
 ```
 
-Handlerの準備が整いました。最後にEvent GridのSubscriptionを作成します。トークン付きのエンドポイントは、ポータルの[統合]で確認できます。
+Handlerの準備が整いました。最後にEvent GridのSubscriptionを作成します。Azure FunctionsのBlobEventHandlerのトークン付きエンドポイントは、ポータルの[統合]で確認できます。
 
 ```
 $ az eventgrid resource event-subscription create --endpoint "https://blobeventpoc.azurewebsites.net/admin/exte
