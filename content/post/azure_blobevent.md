@@ -21,7 +21,7 @@ Event Gridは、Azureで発生した様々なイベントを検知してWebhook�
 Event Gridに期待する理由はいくつかあります。
 
 * フィルタ
-  * 特定のBlobコンテナーにあるjpegファイルのみで発火させる、なんてことができます
+  * 特定のBlobコンテナーにあるjpegファイルの作成イベントのみで発火させる、なんてことができます
 * 信頼性
   * リトライ機能があるので、Handlerが一時的に黙ってしまっても対応できます
 * スケールと高スループット
@@ -136,8 +136,8 @@ g blobeventpoc-rg --resource-name blobeventpoc01 --subject-ends-with jpeg
 }]
 ```
 
-## Azure Functionsにイメージリサイズファンクションを作って連携してみる
-Gvent Grid側の動きが確認できたので、サンプルアプリを作って検証してみましょう。Azure Functionsに画像ファイルのサイズを変えるHandlerアプリを作ってみます。
+## Azure Functionsに画像リサイズファンクションを作って連携してみる
+Gvent Grid側の動きが確認できたので、サンプルアプリを作って検証してみましょう。Azure Functions上に画像ファイルのサイズを変えるHandlerアプリを作ってみます。
 
 ### 概要
 当初想定したのは、ひとつのファンクションで、トリガーはEventGrid、入出力バインドにBlob、という作りでした。ですが、以下のように設計を変えました。
