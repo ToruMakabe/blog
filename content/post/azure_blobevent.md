@@ -106,7 +106,7 @@ RequestBinにWebhookが飛び、中身を見られます。スキーマの確認
 
 .jpgだけじゃなくて.jpegも使われるかもしれませんね。ということで、エンドポイントが同じでフィルタ定義を変えたSubscriptionを追加します。--subject-ends-withをjpegとします。
 ```
-$ az eventgrid resource event-subscription create --endpoint https://requestb.in/y0jbj1y0 -n blobeventpocsub-jpeg --pro
+$ az eventgrid resource event-subscription create --endpoint https://requestb.in/y4jgj2x0 -n blobeventpocsub-jpeg --pro
 vider-namespace Microsoft.Storage --resource-type storageAccounts --included-event-types Microsoft.Storage.BlobCreated -
 g blobeventpoc-rg --resource-name blobeventpoc01 --subject-ends-with jpeg
 ```
@@ -155,7 +155,7 @@ Using [Azure Functions Bindings Visualizer](https://functions-visualizer.azurewe
 なお、この悩みはAzureの開発チームも認識しており、Functions側で対応する方針とのことです。
 
 ### Handler
-C#(csx)で、Event GridからのWebhookを受けるHandlerを作ります。PublisherがBlobの場合、ペイロードにBlobのURLが入っていますので、そこからファイル名を抽出します。そして、そのファイル名をQueueに送ります。ファンクション名はBlobEventHandlerとしました。
+C#(csx)で、Event GridからのWebhookを受けるHandlerを作ります。PublisherがBlobの場合、ペイロードにBlobのURLが入っていますので、そこからファイル名を抽出します。そして、そのファイル名をQueueに送ります。ファンクション名はBlobEventHandlerとしました。なおEventGridTriggerテンプレートは、現在は[試験段階]シナリオに入っています。
 
 [run.csx]
 ```
