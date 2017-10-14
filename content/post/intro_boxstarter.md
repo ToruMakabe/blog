@@ -45,8 +45,8 @@ Install-BoxstarterPackage -PackageName "https://gist.githubusercontent.com/ToruM
 
 以上。
 
-## サンプル設定ファイル
-設定ファイルは[こんな感じ](https://gist.github.com/ToruMakabe/976ceab239ec930f8651cfd72087afac)に書きます。
+## サンプルスクリプト
+スクリプトは[こんな感じ](https://gist.github.com/ToruMakabe/976ceab239ec930f8651cfd72087afac)に書きます。
 
 ちなみに、わたしの環境です。こまごまとした設定やツールの導入はもちろん、Hyper-Vやコンテナ、Windows Subsystem for Linuxの導入も、一気にやっつけます。
 
