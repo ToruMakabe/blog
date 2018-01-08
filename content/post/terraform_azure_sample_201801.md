@@ -241,7 +241,7 @@ terraform apply
 土台となるリソースが作成されたら、次はprocject_aを。
 
 ```
-cd ../procject_a
+cd ../project_a
 terraform init
 terraform plan
 terraform apply
