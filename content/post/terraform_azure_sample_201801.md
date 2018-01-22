@@ -238,7 +238,7 @@ terraform plan
 terraform apply
 ```
 
-土台となるリソースが作成されたら、次はprocject_aを。
+土台となるリソースが作成されたら、次はproject_aを。
 
 ```
 cd ../project_a
