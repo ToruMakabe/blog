@@ -14,7 +14,12 @@ AKSに限った話ではありませんが、Kubernetesにぶら下げるアプ�
 せっかくなので、Azure(AKS)での使い方をまとめておきます。開発ペースやエコシステムの変化が速いので要注意。この記事は2018/2/10に書いています。
 
 ## 使い方
-helmでNGINX Ingress Controllerを導入します。helmを使っていなければ、[入れておいてください](https://github.com/kubernetes/helm#install)。デプロイはこれだけ。Chartは[ここ](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)。
+AKS環境と、Azure DNS上に利用可能なゾーンあることを前提にします。ない場合、それぞれ公式ドキュメントを参考にしてください。
+
+* [Azure Container Service (AKS) クラスターのデプロイ](https://docs.microsoft.com/ja-jp/azure/aks/kubernetes-walkthrough)
+* [Azure CLI 2.0 で Azure DNS の使用を開始する](https://docs.microsoft.com/ja-jp/azure/dns/dns-getstarted-cli)
+
+ではhelmでNGINX Ingress Controllerを導入します。helmを使っていなければ、[入れておいてください](https://github.com/kubernetes/helm#install)。デプロイはこれだけ。Chartは[ここ](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)。
 ```
 $ helm install stable/nginx-ingress --name my-nginx
 ```
