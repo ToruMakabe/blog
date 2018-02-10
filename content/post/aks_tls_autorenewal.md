@@ -9,7 +9,7 @@ title = "AKSのIngress TLS証明書を自動更新する"
 ## カジュアルな証明書管理方式が欲しい
 ChromeがHTTPサイトに対する警告を[強化するそうです](https://japan.cnet.com/article/35100589/)。非HTTPSサイトには、生きづらい世の中になりました。
 
-さてそうなると、TLS証明書の入手と管理、めんどくさいですね。ガチなサイトでは証明書の維持管理を計画的に行うべきですが、検証とかちょっとした用途で立てるサイトでは、とにかくめんどくさい。カジュアルな方式が望まれます。
+さてそうなると、TLS証明書の入手と更新、めんどくさいですね。ガチなサイトでは証明書の維持管理を計画的に行うべきですが、検証とかちょっとした用途で立てるサイトでは、とにかくめんどくさい。カジュアルな方式が望まれます。
 
 そこで、Azure Container Service(AKS)で使える気軽な方法をご紹介します。
 
@@ -78,7 +78,7 @@ spec:
 $ kubectl apply -f cm-issuer-le-staging-sample.yaml
 ```
 
-次は証明書の設定です。マニフェストはcm-cert-le-staging-sample.yamlとします。acme節にACME構成を書きます。チャレンジはHTTP、ingresClassはnginxです。
+次は証明書の設定です。マニフェストはcm-cert-le-staging-sample.yamlとします。acme節にACME構成を書きます。チャレンジはHTTP、ingressClassはnginxです。
 ```
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
@@ -105,7 +105,7 @@ spec:
 $ kubectl apply -f cm-cert-le-staging-sample.yaml
 ```
 
-証明書の取得状況を確認します。
+証明書の発行状況を確認します。
 ```
 $ kubectl describe certificate example-com
 Name:         example-com
@@ -124,7 +124,7 @@ Events:
   Normal   RenewalScheduled       7m (x2 over 7m)  cert-manager-controller  Certificate scheduled for renewal in 1438 hours
 ```
 
-無事に証明書を取得し、更新もスケジュールされました。手順やマニフェストの書きっぷりは問題なさそうです。これをもってステージング完了としましょう。
+無事に証明書が発行され、更新もスケジュールされました。手順やマニフェストの書きっぷりは問題なさそうです。これをもってステージング完了としましょう。
 
 ではLet's EncryptのAPIエンドポイントをProduction向けに変更し、新たにIssuer登録します。cm-issuer-le-prod-sample.yamlとします。
 ```
@@ -178,7 +178,7 @@ spec:
 $ kubectl apply -f cm-cert-le-prod-sample.yaml
 ```
 
-取得状況を確認します。
+発行状況を確認します。
 ```
 $ kubectl describe certificate prod-example-com
 Name:         prod-example-com
@@ -196,7 +196,7 @@ Events:
   Normal   RenewalScheduled       6s (x3 over 5m)  cert-manager-controller  Certificate scheduled for renewal in 1438 hours
   Normal   CeritifcateIssued      6s               cert-manager-controller  Certificated issuedsuccessfully
 ```
-証明書を取得し、1438時間(約60日)内の更新がスケジュールされました。
+証明書が発行され、1438時間(約60日)内の更新がスケジュールされました。
 
 ではバックエンドを設定して確認してみましょう。バックエンドにNGINXを立て、exposeします。
 ```
