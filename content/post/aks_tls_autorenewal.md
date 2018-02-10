@@ -22,7 +22,7 @@ ChromeがHTTPサイトに対する警告を[強化するそうです](https://ja
 なおKubernetes/AKSは開発ペースやエコシステムの変化が速いので要注意。この記事は2018/2/10に書いています。
 
 ## 使い方
-AKS環境と、Azure DNS上に利用可能なゾーンあることを前提にします。ない場合、それぞれ公式ドキュメントを参考にしてください。
+AKSクラスターと、Azure DNS上に利用可能なゾーンあることを前提にします。ない場合、それぞれ公式ドキュメントを参考にしてください。
 
 * [Azure Container Service (AKS) クラスターのデプロイ](https://docs.microsoft.com/ja-jp/azure/aks/kubernetes-walkthrough)
 * [Azure CLI 2.0 で Azure DNS の使用を開始する](https://docs.microsoft.com/ja-jp/azure/dns/dns-getstarted-cli)
@@ -47,7 +47,7 @@ EXTERNAL-IPが割り当てられたら、Azure DNSで名前解決できるよう
 $ az network dns record-set a add-record -z example.com -g your-dnszone-rg -n www -a 52.234.148.138
 ```
 
-cert-managerのソースをGitHubから取得し、contribからhelm installします。いずれstableを使えるようになるでしょう。なお、このAKS環境はまだRBACを使っていないので、"--set rbac.create=false"オプションを指定しています。
+cert-managerのソースをGitHubから取得し、contribからhelm installします。いずれstableを使えるようになるでしょう。なお、このAKSクラスターはまだRBACを使っていないので、"--set rbac.create=false"オプションを指定しています。
 ```
 $ git clone https://github.com/jetstack/cert-manager
 $ cd cert-manager/
