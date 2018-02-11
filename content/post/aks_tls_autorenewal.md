@@ -22,7 +22,7 @@ ChromeがHTTPサイトに対する警告を[強化するそうです](https://ja
 なおKubernetes/AKSは開発ペースやエコシステムの変化が速いので要注意。この記事は2018/2/10に書いています。
 
 ## 使い方
-AKSクラスターと、Azure DNS上に利用可能なゾーンあることを前提にします。ない場合、それぞれ公式ドキュメントを参考にしてください。
+AKSクラスターと、Azure DNS上に利用可能なゾーンがあることを前提にします。ない場合、それぞれ公式ドキュメントを参考にしてください。
 
 * [Azure Container Service (AKS) クラスターのデプロイ](https://docs.microsoft.com/ja-jp/azure/aks/kubernetes-walkthrough)
 * [Azure CLI 2.0 で Azure DNS の使用を開始する](https://docs.microsoft.com/ja-jp/azure/dns/dns-getstarted-cli)
