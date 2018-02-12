@@ -39,7 +39,6 @@ NAME                                     TYPE           CLUSTER-IP     EXTERNAL-
 kubernetes                               ClusterIP      10.0.0.1       <none>           443/TCP                     79d
 my-nginx-nginx-ingress-controller        LoadBalancer   10.0.2.105     52.234.148.138   80:30613/TCP,443:30186/TCP   6m
 my-nginx-nginx-ingress-default-backend   ClusterIP      10.0.102.246   <none>           80/TCP                     6m
-nginx                                    NodePort       10.0.73.190    <none>           80:32625/TCP                 4m
 ```
 
 EXTERNAL-IPが割り当てられたら、Azure DNSで名前解決できるようにします。Azure CLIを使います。Ingressのホスト名をwww.example.comとする例です。このホスト名で、後ほどLet's Encryptから証明書を取得します。
@@ -245,14 +244,6 @@ $ curl https://www.example.com/
 <html>
 <head>
 <title>Welcome to nginx!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-</head>
 [snip]
 ```
 
