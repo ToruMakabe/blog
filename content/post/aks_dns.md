@@ -84,7 +84,7 @@ $ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/your-su
 
 appId、password、tenantを控えておいてください。次でsecretに使います。
 
-次にExteralDNSに渡すsecretを作ります。まずJSONファイルに書きます。
+ではExteralDNSに渡すsecretを作ります。まずJSONファイルに書きます。
 
 [azure.json]
 ```
@@ -190,7 +190,7 @@ Name      ResourceGroup       Ttl  Type    Metadata
 hogeginx  hoge-dns-rg         300  A
 ```
 
-
+ゲッツ。
 ```
 $ curl hogeginx.example.com
 <!DOCTYPE html>
