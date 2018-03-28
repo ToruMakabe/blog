@@ -9,13 +9,13 @@ title = "Azure DNS Private Zonesの動きを確認する"
 ## プライベートゾーンのパブリックプレビュー開始
 Azure DNSのプライベートゾーン対応が、全リージョンでパブリックプレビューとなりました。ゾーンとプレビューのプライベートとパブリックが入り混じって、なにやら紛らわしいですが。
 
-さて、このプライベートゾーン対応ですが、名前のとおりAzure DNSをプライベートな仮想ネットワーク(VNET)で使えるようになります。加えて、しみじみと嬉しい便利機能がついています。
+さて、このプライベートゾーン対応ですが、名前のとおりAzure DNSをプライベートな仮想ネットワーク(VNet)で使えるようになります。加えて、しみじみと嬉しい便利機能がついています。
 
-* Split-Horizonに対応します。VNET内からの問い合わせにはプライベートゾーン、それ以外からはパブリックゾーンのレコードを返します。
+* Split-Horizonに対応します。VNet内からの問い合わせにはプライベートゾーン、それ以外からはパブリックゾーンのレコードを返します。
 * 仮想マシンの作成時、プライベートゾーンへ自動でホスト名を追加します。
-* プライベートゾーンとVNETをリンクして利用します。複数のVNETをリンクすることが可能です。
-* リンクの種類として、仮想マシンホスト名の自動登録が行われるVNETをRegistration VNET、名前解決(正引き)のみ可能なResolution VNETがあります。
-* プライベートゾーンあたり、Registration VNETの現時点の上限数は1、Resolution VNETは10です。
+* プライベートゾーンとVNetをリンクして利用します。複数のVNetをリンクすることが可能です。
+* リンクの種類として、仮想マシンホスト名の自動登録が行われるVNetをRegistration VNet、名前解決(正引き)のみ可能なResolution VNetがあります。
+* プライベートゾーンあたり、Registration VNetの現時点の上限数は1、Resolution VNetは10です。
 
 公式ドキュメントは[こちら](https://docs.microsoft.com/en-us/azure/dns/private-dns-overview)。現時点の[制約もまとまっている](https://docs.microsoft.com/en-us/azure/dns/private-dns-overview#limitations)ので、目を通しておきましょう。
 
@@ -25,7 +25,7 @@ Azure DNSのプライベートゾーン対応が、全リージョンでパブ�
 ### 事前に準備する環境
 下記リソースを先に作っておきます。手順は割愛。ドメイン名はexample.comとしましたが、適宜読み替えてください。
 
-* VNET *2
+* VNet *2
   * vnet01
     * subnet01
       * subnet01-nsg (allow ssh)
@@ -52,7 +52,7 @@ ZoneName      ResourceGroup             RecordSets    MaxRecordSets
 example.com   common-global-rg                   2             5000
 ```
 
-プライベートゾーンを作成します。Registration VNETとしてvnet01をリンクします。[現時点の制約](https://docs.microsoft.com/en-us/azure/dns/private-dns-overview#limitations)で、リンク時にはVNET上にVMが無い状態にする必要があります。
+プライベートゾーンを作成します。Registration VNetとしてvnet01をリンクします。[現時点の制約](https://docs.microsoft.com/en-us/azure/dns/private-dns-overview#limitations)で、リンク時にはVNet上にVMが無い状態にする必要があります。
 
 ```
 $ az network dns zone create -g private-dns-poc-ejp-rg -n example.com --zone-type Private --registration-vnets vnet01
@@ -68,7 +68,7 @@ example.com   common-global-rg                   2             5000
 example.com   private-dns-poc-ejp-rg             1             5000
 ```
 
-### Registration VNETへVMを作成
+### Registration VNetへVMを作成
 VMを2つ作ります。1つにはインターネット経由でsshするので、パブリックIPを割り当てます。
 
 ```
@@ -101,14 +101,14 @@ Name:   vm01.example.com
 Address: 13.78.84.84
 ```
 
-### Registration VNETの動きを確認
+### Registration VNetの動きを確認
 vnet01のvm01へ、パブリックIP経由でsshします。
 
 ```
 $ ssh vm01.example.com
 ```
 
-同じRegistration VNET上のvm02を正引きします。ドメイン名無し、ホスト名だけでnslookupすると、VNETの内部ドメイン名がSuffixになります。
+同じRegistration VNet上のvm02を正引きします。ドメイン名無し、ホスト名だけでnslookupすると、VNetの内部ドメイン名がSuffixになります。
 
 ```
 vm01:~$ nslookup vm02
@@ -145,7 +145,7 @@ Authoritative answers can be found from:
 ```
 
 ### Split-Horizonの動きを確認
-さて、いま作業をしているvm01には、インターネット経由でパブリックゾーンで名前解決してsshしたわけですが、プライベートなVNET内でnslookupするとどうなるでしょう。
+さて、いま作業をしているvm01には、インターネット経由でパブリックゾーンで名前解決してsshしたわけですが、プライベートなVNet内でnslookupするとどうなるでしょう。
 
 ```
 vm01:~$ nslookup vm01.example.com
@@ -161,8 +161,8 @@ Address: 10.0.0.4
 
 あ、どうでもいいことですが、Split-Horizonって戦隊モノの必殺技みたいなネーミングですね。叫びながら地面に拳を叩きつけたい感じ。
 
-### Resolution VNETの動きを確認
-vnet02を作成し、Resolution VNETとしてプライベートゾーンとリンクします。そして、vnet02にvm03を作ります。vm03へのsshまで一気に進めます。
+### Resolution VNetの動きを確認
+vnet02を作成し、Resolution VNetとしてプライベートゾーンとリンクします。そして、vnet02にvm03を作ります。vm03へのsshまで一気に進めます。
 
 ```
 $ BASE_NAME="private-dns-poc-ejp"
@@ -201,7 +201,7 @@ Name:   vm01.example.com
 Address: 10.0.0.4
 ```
 
-Resolution VNETからは、逆引きできません。
+Resolution VNetからは、逆引きできません。
 
 ```
 vm03:~$ nslookup 10.0.0.4
@@ -211,7 +211,7 @@ Address:        168.63.129.16#53
 ** server can't find 4.0.0.10.in-addr.arpa: NXDOMAIN
 ```
 
-ところでRegistration VNETからResolution VNETのホスト名をnslookupするとどうなるでしょう。
+ところでRegistration VNetからResolution VNetのホスト名をnslookupするとどうなるでしょう。
 
 ```
 $ ssh vm01.example.com
@@ -228,4 +228,4 @@ Address:        168.63.129.16#53
 ** server can't find vm03.example.com: NXDOMAIN
 ```
 
-ドメイン名あり、なしに関わらず、名前解決できません。VNETが別なのでVNETの内部DNSで解決できない、また、Resolution VNETのVMはレコードがプライベートゾーンに自動登録されないことが分かります。
+ドメイン名あり、なしに関わらず、名前解決できません。VNetが別なのでVNetの内部DNSで解決できない、また、Resolution VNetのVMはレコードがプライベートゾーンに自動登録されないことが分かります。
