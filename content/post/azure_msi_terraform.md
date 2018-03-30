@@ -225,7 +225,7 @@ terraform {
 }
 ```
 
-Soft Delete設定は、別途 [az storage blob service-properties delete-policy update](https://docs.microsoft.com/en-us/cli/azure/storage/blob/service-properties/delete-policy?view=azure-cli-latest#az-storage-blob-service-properties-delete-policy-update) コマンドで行ってください。
+soft delete設定は、別途 [az storage blob service-properties delete-policy update](https://docs.microsoft.com/en-us/cli/azure/storage/blob/service-properties/delete-policy?view=azure-cli-latest#az-storage-blob-service-properties-delete-policy-update) コマンドで行ってください。
 
 ### プロビジョニングしてみる
 ではTerraformを動かしてみましょう。サブディレクトリsampleを作り、そこで作業します。
