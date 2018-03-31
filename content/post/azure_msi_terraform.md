@@ -177,7 +177,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 }
 ```
 
-ちなみに、role id "b24988ac-6180-42a0-ab88-20f7382dd24c"はConributorを指します。
+ちなみに、role id "b24988ac-6180-42a0-ab88-20f7382dd24c"はContributorを指します。
 
 tfTemplateというディレクトリも用意されているようです。2つのファイルがあります。
 
