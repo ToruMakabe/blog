@@ -4,7 +4,7 @@ build:
     - arjen/hugo-build:
         version: "0.39"
         theme: purehugo
-        flags: --buildDrafts=true	
+        flags: --buildDrafts=true
 
 deploy:
   steps:
