@@ -46,6 +46,7 @@ Azureでコンテナーを使うシナリオを例に紹介します。ACI(Azure
 
 ## ACIの場合
 ざっと以下の流れです。
+
 1. リソースグループ作成
 2. Cosmos DBアカウント作成
 3. ACIコンテナーグループ作成 (Cosmos DB属性から接続文字列を生成)
@@ -116,6 +117,7 @@ containerのenvironment_variablesブロックでCosmos DBの属性を参照し�
 
 ## AKS
 AKSの場合、流れは以下の通りです。
+
 1. リソースグループ作成
 2. Cosmos DBアカウント作成
 3. AKSクラスター作成 
