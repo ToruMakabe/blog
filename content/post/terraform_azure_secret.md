@@ -100,7 +100,7 @@ resource "azurerm_container_group" "aci-todo" {
   os_type             = "linux"
 
   container {
-    name   = "hw"
+    name   = "todo"
     image  = "torumakabe/nodetodo"
     cpu    = "1"
     memory = "1.5"
