@@ -178,7 +178,7 @@ PS C:\Users\tomakabe\go\src\github.com\ToruMakabe\work> setx WSLENV "$env:WSLENV
 成功: 指定した値は保存されました。
 ```
 
-いい感じって何よ。それは環境に合わせたパス表現の変換です。WSLで見てみましょう。WSLENVを読ませる必要があるため、VS Codeをリロード後、ターミナルで確認します。
+いい感じって何よ。それは環境に合わせたパス表現の変換です。WSLで見てみましょう。WSLENVを読ませる必要があるため、VS Codeを再起動します。そして、ターミナルで確認します。
 
 
 ```
