@@ -95,7 +95,7 @@ VMに紐づいてるパブリックIPを確認したいときは、こんなエ�
 
 ```
 [get-vm-pip]
-command = vm list-ip-addresses --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress
+command = vm list-ip-addresses --query [].virtualMachine.network.publicIpAddresses[].ipAddress
 ```
 
 実行すると。
