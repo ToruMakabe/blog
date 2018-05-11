@@ -123,7 +123,7 @@ Hello Go on the new WSL
 ### そぞろ歩き その2(WSLでのGo開発)
 WSLにつなぎます。ターミナルは任意ですが、わたしはVS Codeの統合ターミナルが好きです。コードを書きながら操作できるので。
 
-GOPATHを確認します。空っぽです。WSLは既定でWindowsへ環境変数PATHを渡します。PATHは特別扱いです。ですが、他の環境変数は、指定しないと渡しません。よってWindowsで設定していても、WSLから見るとGOPATHは空っぽです。
+GOPATHを確認します。空っぽです。WSLは既定でWindowsから環境変数PATHを受け取ります。PATHは特別扱いです。ですが、他の環境変数は、指定しないと渡されません。よってWindowsで設定していても、WSLから見るとGOPATHは空っぽです。
 
 ```
 ~ $ echo $GOPATH
