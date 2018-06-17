@@ -14,6 +14,13 @@ title = "Azure Blob アップローダーをGoで書いた、そしてその理�
 
 ということで、新しいSDKで書いてみたかった、というのがひとつめの理由です。ローカルにあるファイルを読んでBlobにアップロードするコードは、こんな感じ。
 
+### (2018/6/17) 更新
+
+* SDKバージョンを 2017-07-29 へ変更
+* 関数 UploadStreamToBlockBlob を UploadFileToBlockBlob に変更
+* Parallelism オプションを追加
+* ヘルパー関数 handleErrors を追加
+
 ```
 package main
 
@@ -25,7 +32,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/Azure/azure-storage-blob-go/2016-05-31/azblob"
+	"github.com/Azure/azure-storage-blob-go/2017-07-29/azblob"
 )
 
 var (
@@ -35,6 +42,7 @@ var (
 	fileName       string
 	blockSize      int64
 	blockSizeBytes int64
+	parallelism    int64
 )
 
 func init() {
@@ -46,25 +54,42 @@ func init() {
 	flag.StringVar(&fileName, "file", "", "(Required) Upload filename")
 	flag.Int64Var(&blockSize, "b", 4, "(Optional - short option) Blob Blocksize (MB) - From 1 to 100. Max filesize depends on this value. Max filesize = Blocksize * 50,000 blocks")
 	flag.Int64Var(&blockSize, "blocksize", 4, "(Optional) Blob Blocksize (MB) - From 1 to 100. Max filesize depends on this value. Max filesize = Blocksize * 50,000 blocks")
+	flag.Int64Var(&parallelism, "p", 5, "(Optional - short option) Parallelism - From 0 to 32. Default 5.")
+	flag.Int64Var(&parallelism, "parallelism", 5, "(Optional) Parallelism - From 0 to 32. Default 5.")
 	flag.Parse()
 
-	if (blockSize < 1) || (blockSize) > 100 {
+	if (blockSize < 1) || (blockSize > 100) {
 		fmt.Println("Blocksize must be from 1MB to 100MB")
 		os.Exit(1)
 	}
 	blockSizeBytes = blockSize * 1024 * 1024
+
+	if (parallelism < 0) || (parallelism > 32) {
+		fmt.Println("Parallelism must be from 0 to 32")
+		os.Exit(1)
+	}
+}
+
+func handleErrors(err error) {
+	if err != nil {
+		if serr, ok := err.(azblob.StorageError); ok { // This error is a Service-specific
+			switch serr.ServiceCode() { // Compare serviceCode to ServiceCodeXxx constants
+			case azblob.ServiceCodeContainerAlreadyExists:
+				fmt.Println("Received 409. Container already exists")
+				return
+			}
+		}
+		log.Fatal(err)
+	}
 }
 
 func main() {
 	file, err := os.Open(fileName)
-	if err != nil {
-		log.Fatal(err)
-	}
+	handleErrors(err)
 	defer file.Close()
+
 	fileSize, err := file.Stat()
-	if err != nil {
-		log.Fatal(err)
-	}
+	handleErrors(err)
 
 	u, _ := url.Parse(fmt.Sprintf("https://%s.blob.core.windows.net/%s/%s", accountName, containerName, fileName))
 	blockBlobURL := azblob.NewBlockBlobURL(*u, azblob.NewPipeline(azblob.NewSharedKeyCredential(accountName, accountKey), azblob.PipelineOptions{}))
@@ -72,17 +97,16 @@ func main() {
 	ctx := context.Background()
 
 	fmt.Println("Uploading block blob...")
-	putBlockList, err := azblob.UploadStreamToBlockBlob(ctx, file, fileSize.Size(), blockBlobURL,
-		azblob.UploadStreamToBlockBlobOptions{
+	response, err := azblob.UploadFileToBlockBlob(ctx, file, blockBlobURL,
+		azblob.UploadToBlockBlobOptions{
 			BlockSize: blockSizeBytes,
 			Progress: func(bytesTransferred int64) {
 				fmt.Printf("Uploaded %d of %d bytes.\n", bytesTransferred, fileSize.Size())
 			},
+			Parallelism: uint16(parallelism),
 		})
-	if err != nil {
-		log.Fatal(err)
-	}
-	_ = putBlockList // Avoid compiler's "declared and not used" error
+	handleErrors(err)
+	_ = response // Avoid compiler's "declared and not used" error
 
 	fmt.Println("Done")
 }
