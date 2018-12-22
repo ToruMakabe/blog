@@ -21,7 +21,7 @@ title = "GitHub ActionsでAzure CLIとkubectlを動かす"
 
 Dockerに慣れていて、ちょっとしたタスクの自動化を、GitHubで完結したい人に良さそうです。
 
-## Kubernetes(AKS) kubectlサンプル
+## Azure CLI/Kubernetes(AKS) kubectlサンプル
 
 こんなことを試してみました。
 
