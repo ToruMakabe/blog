@@ -12,6 +12,6 @@ deploy:
         packages: git ssh-client
     - leipert/git-push:
         gh_oauth: $GIT_TOKEN
-        repo: ToruMakabe/torumakabe.github.io
+        repo: ToruMakabe/ToruMakabe.github.io
         branch: master
         basedir: public
