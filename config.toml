@@ -1,4 +1,4 @@
-baseurl = "http://torumakabe.github.io/"
+baseurl = "https://ToruMakabe.github.io/"
 languageCode = "ja"
 title = "re-imagine"
 theme = "purehugo"
