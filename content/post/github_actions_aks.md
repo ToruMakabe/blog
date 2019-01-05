@@ -31,7 +31,7 @@ Dockerに慣れていて、ちょっとしたタスクの自動化を、GitHub�
 * イベント発生元がmasterブランチであれば継続
 * kubectl applyでマニフェストを適用
 
-kubectlを制限したい/証明書を配るのめんどくさい、なのでGitHubにPushされたらActionsでデプロイ、ってシナリオです。がっつり使うにはまだ検証足らずですが、ひとまずできることは確認しました。
+kubectlを制限したい、証明書を配るのめんどくさい、なのでGitHubにPushされたらActionsでデプロイ、ってシナリオです。がっつり使うにはまだ検証足らずですが、ひとまずできることは確認しました。
 
 コードは [ここ](https://github.com/ToruMakabe/actions-playground) に。
 
