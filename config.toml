@@ -1,11 +1,37 @@
 baseurl = "https://ToruMakabe.github.io/"
-languageCode = "ja"
 title = "re-imagine"
-theme = "purehugo"
+languageCode = "ja"
 Paginate = 5
+theme = "kiss"
+copyright = "&copy; Copyright 2019 Toru Makabe"
+enableRobotsTXT = true
 
-[params]
-  twitterName = "tmak_tw"
-  twitter = "tmak_tw"
-  githubName = "ToruMakabe"
-  description = "my life is the sum of my imagination"
+[params.rss] # Adding this tag enables RSS feed
+includeContent = true # Includes whole content in rss
+authorName = "Toru Makabe" # Author full name
+
+[params.info]
+adsense = "" # Adsense ID (ID only, without ca-pub-)
+enableSocial = true # Adds OpenGraph and Twitter cards
+homeTitle = "" # Title for home page
+poweredby = true # Adds powered by hugo and kiss below Copyright
+related = true # Includes related articles at the bottom of the article
+
+[params.features]
+disqusOnDemand = false  # Load Disqus comments on click
+
+[params.opengraph.twitter]
+page = "" # Twitter Page username. If not set, params.social.twitter will be used.
+
+[params.social]
+twitter = "tmak_tw"
+instagram = "torumakabe"
+linkedin = "toru-makabe-b436b117"
+github = "ToruMakabe"
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["github","twitter","instagram","linkedin","rss"]
+
+[taxonomies]
+tag ="tags"
