@@ -10,7 +10,7 @@ action "master" {
 
 action "Build_And_Deploy" {
   needs = "master"
-  uses = "Build_And_Deploy"
+  uses = "./.action"
   env = {
     TARGET_REPO = "ToruMakabe/ToruMakabe.github.io"
     HUGO_VERSION = "0.55.2"
