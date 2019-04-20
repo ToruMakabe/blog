@@ -60,4 +60,4 @@ echo 'Committing the site to git and pushing'
     git push origin master
 )
 
-echo 'Completed'
+echo 'Complete'
