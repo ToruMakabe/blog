@@ -3,8 +3,8 @@
 set -e
 set -o pipefail
 
-if [[ -n "$TOKEN" ]]; then
-	GITHUB_TOKEN=$TOKEN
+if [[ -n "$GH_PAT" ]]; then
+	GITHUB_TOKEN=$GH_PAT
 fi
 
 if [[ -z "$GITHUB_TOKEN" ]]; then
