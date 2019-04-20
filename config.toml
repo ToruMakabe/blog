@@ -28,10 +28,9 @@ twitter = "tmak_tw"
 instagram = "torumakabe"
 linkedin = "toru-makabe-b436b117"
 github = "ToruMakabe"
-rss = "index.xml" # Add this to show RSS button in social.
 
 [params.social.config]
-platforms = ["github","twitter","instagram","linkedin","rss"]
+platforms = ["github","twitter","instagram","linkedin"]
 
 [taxonomies]
 tag ="tags"
