@@ -74,7 +74,7 @@ data "azurerm_log_analytics_workspace" "aks" {
 }
 ```
 
-次のように定義すれば、resource作成時に参照できます。
+それを次のように、resource作成時に参照できます。
 
 ```
 resource "azurerm_monitor_diagnostic_setting" "aks" {
