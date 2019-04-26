@@ -52,7 +52,13 @@ Terraformを使い始めるとすぐにその存在に気付くのですが、�
 
 Terraformはリソースを"API Management Resource(resource)"として定義すると、作成から廃棄まで、ライフサイクル全体の面倒をみます。つまりresourceとして定義したものをapplyすれば作成し、destroyすれば廃棄します。いっぽうでData Source(data)は参照用ですので、定義したリソースに、変更を加えません。
 
-たとえば、AKSマスターコンポーネントのログをLog Analyticsへ転送するために、Azure Diagnoticsリソースを作成するとしましょう。作成には、対象となる既存AKSクラスターのIDとLog AnalyticsのWorkspace IDが要ります。IDとは /subscriptions/hogehoge/resourcegroups/fugafuga/providers/Microsoft.ContainerService/managedClusters/hogefuga とかいうやつです。いちいち調べるの、めんどくさい。
+たとえば、AKSマスターコンポーネントのログをLog Analyticsへ転送するために、Azure Diagnoticsリソースを作成するとしましょう。作成には、対象となる既存AKSクラスターのIDとLog AnalyticsのWorkspace IDが要ります。IDとは、
+
+```
+/subscriptions/hogehoge/resourcegroups/fugafuga/providers/Microsoft.ContainerService/managedClusters/hogefuga
+```
+
+とかいうやつです。いちいち調べるの、めんどくさい。
 
 そこで、AKSクラスターとLog AnalyticsのWorkspaceをdataとして定義します。
 
