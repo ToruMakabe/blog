@@ -140,6 +140,7 @@ HelmとIstioは開発の流れが速いので、ワークアラウンド多め�
 
 * Gist上の3ファイルを同じディレクトリに置く
 * variables.tf.sampleの変数を設定し、ファイルをリネーム(.sampleを消し、.tfにする)
+* AKSクラスターの管理クレデンシャルをAzure CLIで取得 (az aks get-credentials -a)
 * Terraform導入済みのホストで実行
   * WSL(Ubuntu 18.04)とmasOS Mojaveで動作検証しています
   * Terraformの設定から確認したい場合は以下を参考に
