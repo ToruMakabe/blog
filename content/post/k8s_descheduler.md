@@ -83,7 +83,7 @@ spec:
         image: nginx
         resources:
           requests:
-            cpu: ５00m
+            cpu: 500m
 ```
 
 デプロイします。
