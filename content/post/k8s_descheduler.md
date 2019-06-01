@@ -18,7 +18,7 @@ KubernetesのSchedulerはPodをNodeに配置しますが、配置後に見直し
 
 >[図で理解する Descheduler](https://speakerdeck.com/daikurosawa/introduction-to-descheduler)
 
-これを読んでからプロジェクトのREADMEを読むと理解が進むでしょう。
+これを読んでからプロジェクトのREADMEに進むと理解が進むでしょう。
 
 >[Descheduler for Kubernetes](https://github.com/kubernetes-incubator/descheduler/tree/master)
 
@@ -46,7 +46,7 @@ Nodeの障害から復帰後も、同様の寄りっぱなし問題が起こり�
 
 ### 事前準備
 
-DeschedulerをKubernetesのJobとして動かしてみます。Deschedulerはプロジェクト公式のイメージを提供していないようなので、[プロジェクトREADME](https://github.com/kubernetes-incubator/descheduler#running-descheduler-as-a-job-inside-of-a-pod)を参考に、イメージをビルドしてレジストリにプッシュしておきます。以降はAzure Container Registryにプッシュしたとして手順を進めます。
+DeschedulerをKubernetesのJobとして動かしてみます。Deschedulerはプロジェクト公式のイメージを提供していないようなので、[プロジェクトのREADME](https://github.com/kubernetes-incubator/descheduler#running-descheduler-as-a-job-inside-of-a-pod)を参考に、イメージをビルドしてレジストリにプッシュしておきます。以降はAzure Container Registryにプッシュしたとして手順を進めます。
 
 ### NodeにPodを寄せる
 
