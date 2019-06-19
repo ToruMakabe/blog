@@ -105,7 +105,7 @@ spec:
 
 KubernetesのリソースにSecretという、ズバリな名前のリソースがあります。Secretは平文ではなくBase64で符号化のうえ、etcd内に保管されます。そしてKubernetesとetcdのバージョンと設定によっては、etcdは暗号化できます。AKSのetcdは ["AKS does encrypt secrets-at-rest" つまり暗号化されています](https://github.com/Azure/kubernetes-kms)。
 
-Secretは実行サーバー上で永続化されず、tmpfs(揮発ファイルシステム)に書き込まれます。
+Secretはそれを受け取るPodの実行サーバー上では永続化されず、tmpfs(揮発ファイルシステム)に書き込まれます。
 
 Secretは以下のようなマニフェストで作成します。
 
@@ -276,7 +276,7 @@ kind: Deployment
 
 これでKey Vaultのjokeというシークレットにジョークを入れておけば、読み込めます。
 
-さて、Key Vaultにシークレットを入れてグッと堅くなったわけですが、もう少し追求してみましょう。そう、サービスプリンシパルをSecretに入れる面倒さが残っています。ここを無くせないものか。
+さて、Key Vaultにシークレットを入れてグッと堅くなったわけですが、もう少し追求してみましょう。そう、サービスプリンシパルのクライアントIDとクライアントシークレットをSecretに入れる面倒さが残っています。ここを無くせないものか。
 
 ## Key Vaultで管理し、Podにそのアクセス権を付与する (Pod Identity)
 
@@ -317,7 +317,7 @@ metadata:
 #         value: your-keyvault-secret-version  #[OPTIONAL] will get latest if commented out
 ```
 
-識別子 aadpodidbinding を指定する必要はありますが、Key Vaultの資格情報をマニフェストへ書く必要がありません。素晴らしい。Goの auth.NewAuthorizerFromEnvironment() は他の認証に使われる環境変数が全てセットされていない時、Managed Identity認証を選択します。そしてPod Identityの実体であるNMIやMICが連動し、認証されるわけです。
+識別子 aadpodidbinding を指定する必要はありますが、Key Vaultの資格情報をマニフェストへ書く必要がありません。素晴らしい。Goの auth.NewAuthorizerFromEnvironment() は他の認証に使われる環境変数が全てセットされていない時、Managed Identity認証を選択します。そしてPod Identityの基盤であるNMIを通じ、Azure ADから認証トークンを得るわけです。
 
 なお、このPod Identitiyはオープンソースプロジェクトとして開発されています。試してみたい、詳細な実装を知りたい人はこちらを。
 
