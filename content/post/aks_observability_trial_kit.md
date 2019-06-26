@@ -73,7 +73,7 @@ Gistに置いた[variables.tf](https://gist.github.com/ToruMakabe/916d4329f6e92c
   * Azure CLIの認証情報が期限切れする場合
     * Terraformコミュニティで[対応中](https://github.com/hashicorp/go-azure-helpers/issues/22)です
 * HCLが長いですが、後半のほとんどはサンプルアプリのDeploymentです
-  * 実際はDeploymentをTerraformでデリバリーするケースは少ないかと。あくまで今回のサンプル向けです
+  * 実際はアプリケーションのDeploymentをTerraformでデリバリーするケースは少ないかと。あくまで今回のサンプル向けです
 
 ## 触ってみよう
 
@@ -230,8 +230,7 @@ frontからmiddle、middleからbackを呼びだす、という流れが可視�
 
 ![Dependency](https://raw.githubusercontent.com/ToruMakabe/Images/master/aks-observability-dependency.png?raw=true "Dependency")
 
-ところでOpenCensusは、別のトレーシング仕様であるOpenTracingとマージされ、今後[OpenTelemetry](https://opentelemetry.io/)として取り組みを続けることになりました。マイクロソフトからも、OpenCensusに引き続き[支持する](https://cloudblogs.microsoft.com/opensource/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/)とアナウンスが出ています。
-
+ところでOpenCensusは、別のトレーシング仕様であるOpenTracingとマージされ、今後[OpenTelemetry](https://opentelemetry.io/)として取り組みを続けることになりました。マイクロソフトからも、OpenCensusに引き続き[支持する](https://cloudblogs.microsoft.com/opensource/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/)とアナウンスが出ています。当面はApplication Insights SDKを使いつつ、OpenTelemetryの本格化を横目でチェックする感じがいいのでは、と思います。
 
 ##### Application Insights 可用性テスト
 
@@ -255,8 +254,8 @@ Kubernetesを追っている人であれば、分散トレーシング機能はI
 
 ## 最後に: お試しキットを超えて
 
-冒頭でも書きましたが、このお試しキットはあくまでひとつの実装例です。Kubernetesの可観測性を高めるサービスやツールは数多くあります。DatadogやNew Relicなど、監視に特化したサービスの機能は見るべきものがあります。ぜひ調べてみてください。
+冒頭でも書きましたが、このお試しキットはあくまでひとつの実装例です。Kubernetesの可観測性を高めるサービスやツールは数多いです。DatadogやNew Relicなど、監視に特化したサービスの機能は見るべきものがあります。ぜひ調べてみてください。
 
-特にアラート通知はPagerDutyなど特化したサービスがあるとうれしいと思います。たとえばAzure MonitorとPrometheusから別々のフォーマットや受諾機能を持つシステムからアラートを受け、それぞれ対応するのは若干つらい。アラートをまとめてくれる仕組みは、検討する価値があると思います。自分で作ってもいいですが。
+特にアラート通知はPagerDutyなど特化したサービスがあるとうれしいと思います。たとえばAzure MonitorとPrometheusから別々のフォーマットや受諾機能を持つシステムからアラートを受け、それぞれ対応するのは若干つらい。アラートをまとめてくれる仕組みは、検討する価値があると思います。
 
 ではでは Enjoy Observability
