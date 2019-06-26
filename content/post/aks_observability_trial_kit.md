@@ -125,7 +125,7 @@ kubectl port-forward -n monitoring svc/prometheus-operator-grafana 3000:80
 
 ブラウザでlocalhost:3000にアクセスすると、ポート転送されてGrafanaのログイン画面が出ます。ユーザー名はadmin、パスワードは先ほどTerraformのapply時に出力されたものを使ってください。忘れた場合はterraform outputで再出力できます。
 
-サンプルのKubernetes向けダッシュボードをGrafanaコミュニティサイトからインポートしていますので、画面左のメニュー "Dashboards"から、 > Manage > smaple と辿って表示してください。
+サンプルのKubernetes向けダッシュボードをGrafanaコミュニティサイトからインポートしています。画面左のメニュー "Dashboards"から、 > Manage > smaple と辿って表示してください。
 
 > [Kubernetes Cluster (Prometheus)](https://grafana.com/dashboards/6417)
 
@@ -166,7 +166,7 @@ for、つまり持続時間が1hなので、このルールに1時間マッチ�
 kubectl port-forward -n monitoring svc/prometheus-operator-alertmanager 9093:9093
 ```
 
-AzureはVMからのメール送信を[制限している](https://docs.microsoft.com/ja-jp/azure/virtual-network/troubleshoot-outbound-smtp-connectivity)ため、お試しキットではPrometheusからの通知設定をしていません。もしメールやWebhook通知を試してみたい場合は、[こちら](https://prometheus.io/docs/alerting/overview/)を参考にConfigを書いてみてください。Configの投入は環境作成時に使ったTerraforrm HCLに追記してapplyすると楽です。
+AzureはVMからのメール送信を[制限している](https://docs.microsoft.com/ja-jp/azure/virtual-network/troubleshoot-outbound-smtp-connectivity)ため、お試しキットではPrometheusからの通知設定をしていません。もしWebhook通知などを試してみたい場合は、[こちら](https://prometheus.io/docs/alerting/overview/)を参考にConfigを書いてみてください。Configの投入は環境作成時に使ったTerraforrm HCLに追記してapplyすると楽です。
 
 PrometheusはKubernetesと同じCNCFプロジェクトということもあり、親和性は大きな利点です。エコシステムも魅力で、試す価値はあります。いっぽうでKubernetesクラスター上に導入する場合は、監視主体と対象が同居するため独立性、客観性が懸念です。これは利点とのトレードオフなので、Azure Monitorなど外部からの監視をうまく組み合わせましょう。
 
@@ -230,7 +230,7 @@ frontからmiddle、middleからbackを呼びだす、という流れが可視�
 
 ![Dependency](https://raw.githubusercontent.com/ToruMakabe/Images/master/aks-observability-dependency.png?raw=true "Dependency")
 
-ところでOpenCensusは、別のトレーシング仕様であるOpenTracingとマージされ、今後[OpenTelemetry](https://opentelemetry.io/)として取り組みを続けることになりました。マイクロソフトからも、OpenCensusに引き続き[支持する](https://cloudblogs.microsoft.com/opensource/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/)とアナウンスが出ています。当面はApplication Insights SDKを使いつつ、OpenTelemetryの本格化を横目でチェックする感じがいいのでは、と思います。
+ところでOpenCensusは、別のトレーシング仕様であるOpenTracingとマージされ、今後[OpenTelemetry](https://opentelemetry.io/)が存続プロジェクトになりました。マイクロソフトからも、OpenCensusに引き続き[支持する](https://cloudblogs.microsoft.com/opensource/2019/05/23/announcing-opentelemetry-cncf-merged-opencensus-opentracing/)とアナウンスが出ています。当面はApplication Insights SDKを使いつつ、OpenTelemetryの本格化を横目でチェックする感じがいいのでは、と思います。
 
 ##### Application Insights 可用性テスト
 
@@ -238,7 +238,7 @@ frontからmiddle、middleからbackを呼びだす、という流れが可視�
 
 > [Web サイトの可用性と応答性の監視](https://docs.microsoft.com/ja-jp/azure/azure-monitor/app/monitor-web-app-availability)
 
-Terraformでの環境構築中、KubernetesのサービスにIPを割り当てたあと、Webテストを自動設定することもできます。TerraformのWebテストリソースからはまだアラートの設定ができないため、お試しキットでは設定していません。(Terraformの対応後に参考となるよう、アラート設定なしのHCLはコメントとして残しておきました)
+Terraformでの環境構築中、KubernetesのサービスにIPを割り当てたあと、Webテストを自動設定することもできます。ですがTerraformのWebテストリソースからはまだアラートの設定ができないため、お試しキットでは設定していません。(Terraformの対応後に参考となるよう、アラート設定なしのHCLはコメントとして残しておきました)
 
 #### サービスメッシュは?
 
@@ -250,12 +250,12 @@ Kubernetesを追っている人であれば、分散トレーシング機能はI
 
 > [Service Mesh Interface: A standard interface for service meshes on Kubernetes](https://smi-spec.io/)
 
-もしサービスメッシュへの期待が分散トレーシング中心であれば、現時点では無理してサービスメッシュに取り組むよりも、アプリケーションにトレーシングのコードを埋め込んだほうが、リスク低く実現できます。
+もしサービスメッシュへの期待が分散トレーシング中心であれば、現時点では無理してサービスメッシュに取り組むよりも、アプリケーションにトレーシングのコードを埋め込む方がいいのではないかと考えます。
 
 ## 最後に: お試しキットを超えて
 
 冒頭でも書きましたが、このお試しキットはあくまでひとつの実装例です。Kubernetesの可観測性を高めるサービスやツールは数多いです。DatadogやNew Relicなど、監視に特化したサービスの機能は見るべきものがあります。ぜひ調べてみてください。
 
-特にアラート通知はPagerDutyなど特化したサービスがあるとうれしいと思います。たとえばAzure MonitorとPrometheusから別々のフォーマットや受諾機能を持つシステムからアラートを受け、それぞれ対応するのは若干つらい。アラートをまとめてくれる仕組みは、検討する価値があると思います。
+特にアラート通知はPagerDutyなど特化したサービスがあるとうれしいと思います。たとえばAzure MonitorとPrometheusから別々のフォーマットや受諾機能を持つシステムからアラートを受け、それぞれ対応するのは若干つらい。アラートをいい感じにまとめてくれる仕組みは、検討する価値があると思います。
 
 ではでは Enjoy Observability
