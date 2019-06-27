@@ -79,7 +79,7 @@ Gistに置いた[variables.tf](https://gist.github.com/ToruMakabe/916d4329f6e92c
 
 ### メトリクス
 
-まずはメトリクスから。メトリクスとは「状態を数値で表せるもの」です。単数系はメトリック。CPUやメモリの使用率、Kubernetes固有ではNotReady状態のノード数やPendingのノード数などがそれにあたります。
+まずはメトリクスから。メトリクスとは「状態を数値で表せるもの」です。単数系はメトリック。CPUやメモリの使用率、Kubernetes固有ではNotReady状態のノード数やPendingのポッド数などがそれにあたります。
 
 Kubernetesでどのようなメトリクスに注目すべきかについては、議論が活発です。探せば参考になる情報が数多くあります。"Golden signals"、"RED Method"、"USE Method"で検索すると、いろいろ見つかるでしょう。
 
