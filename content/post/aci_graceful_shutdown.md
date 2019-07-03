@@ -223,7 +223,7 @@ CMD ["/goapp"]
 
 ## Windowsの場合
 
-これまでの例はLinuxですが、Windowsの場合はコンテナー停止時にアプリへCTRL_SHUTDOWN_EVENTが送られます。ただしイベント発行から5秒後に強制終了が走るため注意が必要です。5秒は固定値です。値を変えたい場合、コンテナー作成時にレジストリーを編集する[ワークアラウンド](https://github.com/moby/moby/issues/25982#issuecomment-426441183)があります。
+これまでの例はLinuxですが、Windowsの場合はコンテナー停止時にアプリへCTRL_SHUTDOWN_EVENTが送られます。ただしイベント発行から5秒後に強制終了が走るため注意が必要です。5秒は固定値です。値を変えたい場合、コンテナー作成時にレジストリを編集する[ワークアラウンド](https://github.com/moby/moby/issues/25982#issuecomment-426441183)があります。
 
 なおWindowsコンテナーの仕様に影響力を持つKubernetes Windows-SIGでは、コンテナーランタイムのDocker EEからCRI-ContainerDへの移行など、まだ大きなテーマが議論され、対応中です。過渡期であることを意識しておきましょう。
 
