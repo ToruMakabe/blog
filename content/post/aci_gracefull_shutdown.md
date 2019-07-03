@@ -2,7 +2,7 @@
 Categories = ["Azure"]
 Tags = ["ACI", "Azure"]
 date = "2019-07-03T23:00:00+09:00"
-title = "Azure Cotainer InstancesのGraceful Shutdown事情"
+title = "Azure Container InstancesのGraceful Shutdown事情"
 
 +++
 
