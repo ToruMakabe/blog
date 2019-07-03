@@ -33,9 +33,9 @@ ACIでは現在PreStop処理を書けません。なので、シグナルをど�
 
 > [Docker and the PID 1 zombie reaping problem](https://blog.phusion.nl/2015/01/20/docker-and-the-pid-1-zombie-reaping-problem/)
 
-Unix/LinuxではプロセスIDの1番はシステム起動時にinit(systemd)へ割り当てられ、すべてのプロセスの親になります。そして親を失ったプロセスの代理親となったり、終了したプロセスを管理テーブルから消したりします。いわゆるゾンビプロセスのお掃除役を担います。
+Unix/LinuxではプロセスIDの1番はシステム起動時にinit(systemd)へ割り当てられます。そして親を失ったプロセスの代理親となったり、終了したプロセスを管理テーブルから消したりします。いわゆるゾンビプロセスのお掃除役も担います。
 
-しかしDockerでは、はじめにコンテナーで起動したプロセスにPID 1が割り当てられます。それはビルド時にDockerfileのENTRYPOINTにexec形式で指定したアプリであったり、シェル形式であれば/bin/sh -cだったりします。
+しかしDockerでは、コンテナーではじめに起動したプロセスにPID 1が割り当てられます。それはビルド時にDockerfileのENTRYPOINTにexec形式で指定したアプリであったり、シェル形式であれば/bin/sh -cだったりします。
 
 この仕様には、次の課題があります。
 
@@ -52,7 +52,7 @@ Unix/LinuxではプロセスIDの1番はシステム起動時にinit(systemd)へ
 2. PID 1で動く擬似initを挟み、その子プロセスとしてアプリを動かす
 3. PID 1で動く擬似initを挟み、その子プロセスとしてアプリを動かす (シグナル変換)
 
-Docker APIを触れる環境であれば、docker run時に[--initオプション](https://docs.docker.com/engine/reference/run/#specify-an-init-process)をつければ擬似init([tini](https://github.com/krallin/tini))をPID 1で起動できます。ですがACIはコンテナーの起動処理を抽象化しているため、ユーザーから--initオプションを指定できません。別の方法を使います。
+Docker APIを触れる環境であれば、docker run時に[--initオプション](https://docs.docker.com/engine/reference/run/#specify-an-init-process)をつければ擬似init([tini](https://github.com/krallin/tini))をPID 1で起動できます。ですがACIはコンテナーの起動処理を抽象化しているため、ユーザーから--initオプションを指定できません。なので別の方法で擬似initを挟みます。
 
 ## それぞれのやり方と動き
 
@@ -86,7 +86,7 @@ func main() {
 }
 ```
 
-SIGTERMとSIGQUITを受け取ったら、受け取ったシグナルの種類をログに書いて終了します。
+SIGTERMかSIGQUITを受け取ったら、受け取ったシグナルの種類をログに書いて終了します。
 
 ### SIGTERMを意識できていない場合
 
