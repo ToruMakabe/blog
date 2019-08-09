@@ -29,7 +29,7 @@ MicroScannerのコンセプトは、以下のリンク先にある記事やス�
 MicroScannerの実行にはトークンが要ります。以下の手順で、指定したメールアドレスに送られてきます。メールを確認し、控えておきましょう。
 
 ```
-$ docker run --rm -it aquasec/microscanner
+$ docker run --rm -it aquasec/microscanner --register <email address>
 ```
 
 ## コンテナービルド時に実行してみる
