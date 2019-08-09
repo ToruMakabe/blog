@@ -1,6 +1,6 @@
 +++
 Categories = ["Azure"]
-Tags = ["Aqua", "Azure", "Container]
+Tags = ["Aqua", "Azure", "Container"]
 date = "2019-08-09T13:00:00+09:00"
 title = "Azure Container Registry TasksでAqua MicroScannerを自動実行する"
 
