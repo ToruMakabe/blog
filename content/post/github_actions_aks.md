@@ -6,6 +6,12 @@ title = "GitHub ActionsでAzure CLIとkubectlを動かす"
 
 +++
 
+## (注: 2019/8/19追記)
+
+GitHub Actionsのワークフロー定義について、HCLからYAMLへの移行が発表されました。記事は更新しません。移行方法は以下を参考にしてください。
+
+> [Migrating GitHub Actions from HCL syntax to YAML syntax](https://help.github.com/en/articles/migrating-github-actions-from-hcl-syntax-to-yaml-syntax)
+
 ## GitHub Actionsのプレビュー招待がきた
 
 ので試します。プレビュー中なので細かいことは抜きに、ざっくりどんなことができるか。
