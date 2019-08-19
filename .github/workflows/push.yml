@@ -1,0 +1,17 @@
+on: push
+name: HUGO
+jobs:
+  master:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: master
+      uses: actions/bin/filter@master
+      with:
+        args: branch master
+    - name: Build_And_Deploy
+      uses: ./.action
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+        HUGO_VERSION: 0.55.2
+        TARGET_REPO: ToruMakabe/ToruMakabe.github.io
