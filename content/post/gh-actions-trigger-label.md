@@ -32,7 +32,7 @@ GitHubでコミュニケーションしているのであれば、環境を再�
 以下、Azureで環境を作る例です。ラベルがIssueに付く、外れるのを契機にワークフローが流れ、条件を満たした場合に環境のデプロイか削除を行います。インフラのコード化はAzure Resource Managerテンプレートでされており、ファイルはリポジトリの deployment/azuredeploy.json に置かれている、というサンプルです。
 
 ```yaml
-name: gh-actions-trigger-label
+name: gh-actions-trigger-labeled
 
 on:
   issues:
@@ -75,6 +75,8 @@ jobs:
 * 環境の違いはパラメーターで注入する
   * この例ではenvで定義したパラメーターをテンプレートデプロイのパラメーターとして渡している
 * Issueトリガーで対象となるブランチはデフォルトブランチ
+* この例は再現環境をリポジトリで1つとしたケース
+  * 他のIssueでラベルを付けられてもいいように、繰り返し実行可能な作りにする
 
 Terraformでも同じようにやりたいところですが、残念ながら terraform-github-actions がdestroyに未対応です。[プルリク](https://github.com/hashicorp/terraform-github-actions/pull/77)は出ているので期待しましょう。なお、GitHub Actionsは発火までにして、以降のデプロイは[Azure Pipelinesに任せてしまう](https://github.com/Azure/pipelines)、という手もあります。
 
