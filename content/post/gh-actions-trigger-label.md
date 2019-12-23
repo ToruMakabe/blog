@@ -77,8 +77,8 @@ jobs:
 * Issueトリガーで対象となるブランチはデフォルトブランチ
 * この例は再現環境をリポジトリで1つとしたケース
   * 他のIssueでラベルを付けられてもいいように、繰り返し実行可能な作りにする
-  * Azure Resource Manager テンプレートデプロイはが既存リソースがあった時、投入内容が同じであれば[実行されない](https://docs.microsoft.com/ja-jp/azure/azure-resource-manager/deployment-modes)が、動的にパラメーターを作っている場合は気を付けましょう
-  * Issueごとに環境をつくりたい場合は、github.event.issue.idなどを活用してリソースを作る
+  * Azure Resource Manager テンプレートデプロイは既存リソースがあった時、投入内容が同じであれば[実行されない](https://docs.microsoft.com/ja-jp/azure/azure-resource-manager/deployment-modes)が、動的にパラメーターを作っている場合は気を付ける
+  * Issueごとに環境をつくりたい場合は、github.event.issue.idなどイベントのペイロードを活用してリソースを作る
 * イベントのペイロードは[公式サイト](https://developer.github.com/v3/activity/events/types/)を参考に
 
 Terraformでも同じようにやりたいところですが、残念ながら terraform-github-actions がdestroyに未対応です。[プルリク](https://github.com/hashicorp/terraform-github-actions/pull/77)は出ているので期待しましょう。なお、GitHub Actionsは発火までにして、以降のデプロイは[Azure Pipelinesに任せてしまう](https://github.com/Azure/pipelines)、という手もあります。
