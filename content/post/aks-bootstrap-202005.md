@@ -2,7 +2,7 @@
 Categories = ["Kubernetes"]
 Tags = ["GitHub", "Azure","Kubernetes"]
 date = "2020-05-21T13:05:00+09:00"
-title = "Azure Kubernetes Service インフラ ブートストラップ開発フロー 2020春版"
+title = "Azure Kubernetes Service インフラ ブートストラップ開発フロー&コードサンプル 2020春版"
 
 +++
 
