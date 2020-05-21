@@ -8,9 +8,9 @@ title = "Azure Kubernetes Service インフラ ブートストラップ開発フ
 
 ## 何の話か
 
-マネージドサービスなどではKubernetesはコマンド1発でクラスターを作れるほど楽になってきているのですが、運用を考えると他にもいろいろ仕込んでおきたいことがあります。監視であったり、ストレージクラスを用意したり、最近ではGitOps関連もあるでしょう。
+マネージドサービスなどではコマンド1発で作れるほどKubernetesクラスターの作成は楽になってきているのですが、運用を考えると他にもいろいろ仕込んでおきたいことがあります。監視であったり、ストレージクラスを用意したり、最近ではGitOps関連もあるでしょう。
 
-ということで、最近わたしがAzure Kubernetes Service(AKS)の環境を作るコードを開発する際のワークフローとサンプルを紹介します。以下がポイントです。
+ということで、最近わたしがAzure Kubernetes Service(AKS)の環境を作るコードを開発する際のサンプルコードとワークフローを紹介します。以下がポイントです。
 
 * BootstrapとConfigurationを分割する
   * 環境構築、維持をまるっと大きなひとつの仕組みに押し込まず、初期構築(Bootstrap)とその後の作成維持(Configuration)を分割しています
@@ -28,7 +28,7 @@ title = "Azure Kubernetes Service インフラ ブートストラップ開発フ
 
 ## メインとなるHCLの概説
 
-ちょっと長いのですが、aksに関する[HCLコード](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/modules/aks/main.tf)は通して読まないとピンとこないと思うので解説します。全体像は[GitHub](https://github.com/ToruMakabe/aks-bootstrap-202005)を確認してください。
+ちょっと長いのですが、AKSに関する[HCLコード](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/modules/aks/main.tf)は通して読まないとピンとこないと思うので解説します。全体像は[GitHub](https://github.com/ToruMakabe/aks-bootstrap-202005)を確認してください。
 
 ```hcl
 data "azurerm_log_analytics_workspace" "aks" {
@@ -287,10 +287,10 @@ resource "helm_release" "helm_operator" {
   * CoreDNSなどCritical Addonを分離するためにノードプールを分けています
   * 安定稼働が優先なのでオートスケール設定はしません
   * コストと[要件](https://docs.microsoft.com/ja-jp/azure/aks/use-system-pools#system-and-user-node-pools)のバランスから、VMはStandard_F2s_v2にしています
-  * CriticalAddonsOnlyでtolerationしているPodだけがこのプールで動けるようにtaintします
+  * CriticalAddonsOnlyでtolerationしているPodだけがこのプールで動けるようにtaintしています
   * ただしCritical Addonがdefaultノードプールにスケジューリングされる可能性は残るので、厳密にしたい場合は合わせて[ノードプールのモード指定](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/update-mode-aks-nodepools.sh)、Critical Addonたちへ[nodeSelectorの指定](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/update-nodeselecter-system-deployments.sh)、[リスタート](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/restart-system-deployments.sh)が必要です
-  * なお、この追加したノードプールのモードをsystem、defaultプールのモードをuserにすると、destroy時に先に追加したノードプールを削除しに行ってしまい「systemモードのプールが最低1つは要るぞ」と怒られますので、destroy前にモードを[再設定](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/update-mode-aks-nodepools-on-deletion.sh)しましょう
-  * いずれこの流れはAKS APIとHCLで吸収されると期待しています
+  * なお、この追加したノードプールのモードをsystem、defaultプールのモードをuserにすると、destroy時に追加したsystemノードプールを先に削除しに行ってしまい「systemモードのプールが最低1つは要るぞ」と怒られますので、destroy前にモードを[再設定](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/update-mode-aks-nodepools-on-deletion.sh)しましょう
+  * いずれこの流れはAKS APIとHCLで吸収できると期待しています
 * azurerm_monitor_diagnostic_setting.aks
   * マスターコンポーネントのログをAzure Monitorに送るよう設定します
 * kubernetes_storage_class.managed_premium_bind_wait
