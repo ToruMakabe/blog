@@ -280,7 +280,7 @@ resource "helm_release" "helm_operator" {
 * azurerm_kubernetes_cluster.aks.identity
   * typeをSystemAssignedにしているため、別途サービスプリンシパルを作成、指定する必要はありません
   * 以前はサービスプリンシパルの作成と指定、管理が煩雑、グローバル同期の考慮など悩ましかったのですが、楽になりました
-  * ただしAKS関連リソースが入るリソースグループ(MC_*)の外にあるリソースには、SystemAssigned指定で作られるManaged Identityから[操作する権限がない](https://docs.microsoft.com/ja-jp/azure/aks/use-managed-identity)ため、必要な場合はSystemAssignedではなくサービスプリンシパルを指定しましょう
+  * ただしAKS関連リソースが入るリソースグループ(MC_*)の外にあるリソースには、SystemAssigned指定で作られるManaged Identityから[操作する権限がない](https://docs.microsoft.com/ja-jp/azure/aks/use-managed-identity)ため、必要な場合はSystemAssignedではなく権限を持ったサービスプリンシパルを指定しましょう
     * もしくはSystemAssined指定で作成したManaged Identityに必要な権限を割り当てます
     * 例: AKSを既存の別リソースグループにあるVNetに参加させる場合に、オートスケール時にサブネット操作するための権限割当が必要([参考スクリプト](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/assign_role_mi.sh))
 * azurerm_kubernetes_cluster.aks.addon_profile.azure_policy
