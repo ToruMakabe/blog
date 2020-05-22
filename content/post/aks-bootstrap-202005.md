@@ -276,10 +276,13 @@ resource "helm_release" "helm_operator" {
   * 目的に応じ、お好みのバージョンを
 * azurerm_kubernetes_cluster.aks.default_node_pool
   * 既定のノードプールで、オートスケールを有効にしています
+  * このサンプルでは、加えて後述するManaged Identityへ権限割当を行います
 * azurerm_kubernetes_cluster.aks.identity
   * typeをSystemAssignedにしているため、別途サービスプリンシパルを作成、指定する必要はありません
   * 以前はサービスプリンシパルの作成と指定、管理が煩雑、グローバル同期の考慮など悩ましかったのですが、楽になりました
   * ただしAKS関連リソースが入るリソースグループ(MC_*)の外にあるリソースには、SystemAssigned指定で作られるManaged Identityから[操作する権限がない](https://docs.microsoft.com/ja-jp/azure/aks/use-managed-identity)ため、必要な場合はSystemAssignedではなくサービスプリンシパルを指定しましょう
+    * もしくはSystemAssined指定で作成したManaged Identityに必要な権限を割り当てます
+    * 例: AKSを既存の別リソースグループにあるVNetに参加させる場合に、オートスケール時にサブネット操作するための権限割当が必要([参考スクリプト](https://github.com/ToruMakabe/aks-bootstrap-202005/blob/master/src/scripts/assign_role_mi.sh))
 * azurerm_kubernetes_cluster.aks.addon_profile.azure_policy
   * OPAを利用したポリシー適用を有効化しています
   * 現時点でプレビュー機能なので、[リソースプロバイダーの有効化](https://docs.microsoft.com/ja-jp/azure/governance/policy/concepts/policy-for-kubernetes?toc=%2Fazure%2Faks%2Ftoc.json)も行ってください
