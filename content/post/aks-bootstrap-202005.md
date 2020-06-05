@@ -276,6 +276,7 @@ resource "helm_release" "helm_operator" {
   * 目的に応じ、お好みのバージョンを
 * azurerm_kubernetes_cluster.aks.default_node_pool
   * 既定のノードプールで、オートスケールを有効にしています
+  * Cluster AutoscalerによるオートスケールはPVとの組み合わせに[課題がある](https://github.com/kubernetes/autoscaler/issues/1658)ため、解決するまではオートスケールを有効にしないノードプールを分けてPVを使うことをおすすめします
   * このサンプルでは、加えて後述するManaged Identityへ権限割当を行います
 * azurerm_kubernetes_cluster.aks.identity
   * typeをSystemAssignedにしているため、別途サービスプリンシパルを作成、指定する必要はありません
