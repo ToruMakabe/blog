@@ -1,6 +1,6 @@
 +++
 Categories = ["Azure"]
-Tags = ["Azure","Kubernetes","Terraform]
+Tags = ["Azure","Kubernetes","Terraform"]
 date = "2020-10-06T16:00:00+09:00"
 title = "Azure Kubernetes Serviceの推奨メトリックアラートをTerraoformで設定する"
 
