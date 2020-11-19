@@ -6,6 +6,9 @@ title = "マルチテナント型 Azure Web AppsでアウトバウンドIPを固
 
 +++
 
+## (2020/11/19更新)
+この記事ではアウトバウンド通信をAzure Firewallに向けていますが、[NAT Gatewayにも向けられるようになりました](https://azure.github.io/AppService/2020/11/15/web-app-nat-gateway.html)
+
 ## 何の話か
 
 ここ数週で同じ相談を3件いただきました。うごめくニーズを感じ取ったので、解決策を残しておきます。
