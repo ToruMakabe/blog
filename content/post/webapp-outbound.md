@@ -36,7 +36,7 @@ title = "マルチテナント型 Azure Web AppsでアウトバウンドIPを固
 
 Linux Web AppにPython(Django)アプリを載せ、Azure Database for PostgreSQLに繋ぐ[サンプル](https://docs.microsoft.com/ja-jp/azure/app-service/tutorial-python-postgresql-app?tabs=bash%2Cclone)を例にすると、こんな感じです。
 
-{{<img src="https://raw.githubusercontent.com/ToruMakabe/Images/master/wa-ob-fw.jpg?raw=true" width="400">}}
+{{< figure src="https://raw.githubusercontent.com/ToruMakabe/Images/master/wa-ob-fw.jpg?raw=true" width="400">}}
 
 
 コードを見たほうがピンとくると思うので、Terraformの構成ファイルをGistに置いておきます。上記の環境が一発で作れます。
