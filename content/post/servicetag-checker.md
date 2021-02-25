@@ -50,7 +50,7 @@ title = "Goで書いたAzureのハウスキーピングアプリをContainer Ins
 作りながら考えたことが参考になるかもしれないので、残しておきます。
 
 * ハウスキーピングアプリの実行環境として、Azure FunctionsやLogic Appsもありです。それらを手の内に入れており、言語にこだわりがなければ、そのほうが楽かも
-* FunctionsであればGoを[カスタムハンドラー](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-custom-handlers)で動かす手もあります。ただ、ユースケースが定期実行、つまりタイマトリガだと、入出力バインディングなどFunctionsのおいしいところを活かせないので、あえてカスタムハンドラを使って書くこともないかな、という気持ちに
+* FunctionsであればGoを[カスタムハンドラー](https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-custom-handlers)で動かす手もあります。ただ、ユースケースが定期実行、つまりタイマトリガだと、入出力バインディングなどFunctionsのおいしいところを活かせないので、あえてカスタムハンドラーを使って書くこともないかな、という気持ちに
 * Rustで書いちゃおっかな、とも思ったのですが、Azure SDK for Rustが現状 ["very active development"](https://github.com/Azure/azure-sdk-for-rust)なので、この用途では深呼吸
 * GoはAzure SDKのファーストクラス言語ではありませんが、KubernetesやTerraformのAzure対応で活発に利用されており、実用的です。ただ、Azureリソースの管理系操作、つまり[コントロールプレーン](https://github.com/Azure/azure-sdk-for-go)と、blobの操作など[データプレーン](https://github.com/Azure/azure-sdk-for-go#other-azure-go-packages)向けSDKが分離されているので注意が必要です
   * どちらかだけならいいのですが、このサンプルのようにどちらも使うケースで課題になる
