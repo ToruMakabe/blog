@@ -1,7 +1,7 @@
 +++
 Categories = ["Azure"]
 Tags = ["Azure","Github","Go"]
-date = "2021-02-25T12:00:00+09:00"
+date = "2021-02-25T11:30:00+09:00"
 title = "Goで書いたAzureのハウスキーピングアプリをContainer InstancesとGitHub Actionsで定期実行する"
 
 +++
