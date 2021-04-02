@@ -2,7 +2,7 @@
 Categories = ["Azure"]
 Tags = ["Azure","Github","Go"]
 date = "2021-04-02T11:20:00+09:00"
-title = "Azure Application Insightsのカスタム可用性テストを使って プライベートネットワーク対応の可用性テストをGoで書く"
+title = "Azure Application Insightsのカスタム可用性テストを使って プライベートネットワーク対応の可用性テストプローブをGoで書く"
 
 +++
 
