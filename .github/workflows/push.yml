@@ -12,5 +12,5 @@ jobs:
         uses: ./.action
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-          HUGO_VERSION: 0.71.0
+          HUGO_VERSION: 0.84.4
           TARGET_REPO: ToruMakabe/ToruMakabe.github.io
